@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${formTitle}">Patient Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        form {
+            max-width: 500px;
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+            margin-bottom: 4px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.9em;
+        }
+
+        button, a.button {
+            margin-top: 20px;
+            padding: 10px 14px;
+            text-decoration: none;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button {
+            background-color: #2d6cdf;
+            color: white;
+        }
+
+        a.button {
+            background-color: #999;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<h1 th:text="${formTitle}">Patient Form</h1>
+
+<form th:action="@{${formAction}}" th:object="${patient}" method="post">
+    <label for="firstName">First Name</label>
+    <input type="text" id="firstName" th:field="*{firstName}">
+    <div class="error" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></div>
+
+    <label for="lastName">Last Name</label>
+    <input type="text" id="lastName" th:field="*{lastName}">
+    <div class="error" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></div>
+
+    <label for="birthDate">Birth Date</label>
+    <input type="date" id="birthDate" th:field="*{birthDate}">
+    <div class="error" th:if="${#fields.hasErrors('birthDate')}" th:errors="*{birthDate}"></div>
+
+    <label for="gender">Gender</label>
+    <input type="text" id="gender" th:field="*{gender}">
+    <div class="error" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></div>
+
+    <label for="address">Address</label>
+    <input type="text" id="address" th:field="*{address}">
+
+    <label for="phone">Phone</label>
+    <input type="text" id="phone" th:field="*{phone}">
+
+    <button type="submit">Save</button>
+    <a class="button" th:href="@{/patients}">Cancel</a>
+</form>
+</body>
+</html>

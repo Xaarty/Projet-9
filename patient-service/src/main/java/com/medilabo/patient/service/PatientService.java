@@ -1,6 +1,7 @@
 package com.medilabo.patient.service;
 
 import com.medilabo.patient.dto.PatientDTO;
+import com.medilabo.patient.exception.NotFoundException;
 import com.medilabo.patient.model.Patient;
 import com.medilabo.patient.repository.PatientRepository;
 import org.springframework.stereotype.Service;
@@ -25,7 +26,7 @@ public class PatientService {
 
     public PatientDTO getPatientById(Integer id) {
         Patient patient = patientRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("patient not found"));
+                .orElseThrow(() -> new NotFoundException("Patient not found with id: " + id));
         return convertToDTO(patient);
     }
 
@@ -59,7 +60,7 @@ public class PatientService {
 
     public void deletePatient(Integer id) {
         if (!patientRepository.existsById(id)) {
-            throw new IllegalArgumentException("patient not found");
+            throw new NotFoundException("Patient not found with id: " + id);
         }
 
         patientRepository.deleteById(id);
