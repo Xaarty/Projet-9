@@ -74,9 +74,34 @@ public class PatientFrontService {
         restTemplate.exchange(url, HttpMethod.PUT, entity, PatientDTO.class);
     }
 
+    public List<PatientDTO> searchPatients(String lastName, String firstName) {
+        StringBuilder url = new StringBuilder(gatewayBaseUrl + "/patients/search?lastName=" + lastName);
+
+        if (firstName != null && !firstName.isBlank()) {
+            url.append("&firstName=").append(firstName);
+        }
+
+        HttpEntity<Void> entity = new HttpEntity<>(createHeaders());
+
+        ResponseEntity<List<PatientDTO>> response = restTemplate.exchange(
+                url.toString(),
+                HttpMethod.GET,
+                entity,
+                new ParameterizedTypeReference<List<PatientDTO>>() {}
+        );
+
+        return response.getBody() != null ? response.getBody() : Collections.emptyList();
+    }
+
+    public void deletePatient(Integer id) {
+        String url = gatewayBaseUrl + "/patients/" + id;
+
+        HttpEntity<Void> entity = new HttpEntity<>(createHeaders());
+
+        restTemplate.exchange(url, HttpMethod.DELETE, entity, Void.class);
+    }
+
     private HttpHeaders createHeaders() {
-        HttpHeaders headers = new HttpHeaders();
-        headers.setBasicAuth("user", "password");
-        return headers;
+        return new HttpHeaders();
     }
 }

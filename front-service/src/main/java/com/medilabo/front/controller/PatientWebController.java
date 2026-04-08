@@ -23,8 +23,21 @@ public class PatientWebController {
     }
 
     @GetMapping("/patients")
-    public String getPatients(Model model) {
-        model.addAttribute("patients", patientFrontService.getAllPatients());
+    public String getPatients(
+            @RequestParam(required = false) String lastName,
+            @RequestParam(required = false) String firstName,
+            Model model) {
+
+        if (lastName != null && !lastName.isBlank()) {
+            model.addAttribute("patients", patientFrontService.searchPatients(lastName, firstName));
+        } else {
+            model.addAttribute("error", "Last name is required for search");
+            model.addAttribute("patients", patientFrontService.getAllPatients());
+        }
+
+        model.addAttribute("lastName", lastName);
+        model.addAttribute("firstName", firstName);
+
         return "patients";
     }
 
@@ -71,6 +84,12 @@ public class PatientWebController {
         }
 
         patientFrontService.updatePatient(id, patientDTO);
+        return "redirect:/patients";
+    }
+
+    @PostMapping("/patients/delete/{id}")
+    public String deletePatient(@PathVariable Integer id) {
+        patientFrontService.deletePatient(id);
         return "redirect:/patients";
     }
 }

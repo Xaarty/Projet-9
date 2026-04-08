@@ -1,4 +1,4 @@
-package com.medilabo.patient.config;
+package com.medilabo.front.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,13 +16,15 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(csrf -> csrf.disable()) // important pour POST/PUT
-                .headers(headers -> headers.frameOptions(frame -> frame.disable())) // pour H2 console
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/h2-console/**").permitAll() // accès console H2
-                        .anyRequest().authenticated() // tout le reste protégé
+                        .requestMatchers("/css/**", "/js/**").permitAll()
+                        .anyRequest().authenticated()
                 )
-                .httpBasic(Customizer.withDefaults());
+                .formLogin(Customizer.withDefaults())
+                .logout(logout -> logout
+                        .logoutSuccessUrl("/login?logout")
+                        .permitAll()
+                );
 
         return http.build();
     }
@@ -30,7 +32,7 @@ public class SecurityConfig {
     @Bean
     public InMemoryUserDetailsManager userDetailsService(PasswordEncoder passwordEncoder) {
         return new InMemoryUserDetailsManager(
-                User.withUsername("user")
+                User.withUsername("doctor")
                         .password(passwordEncoder.encode("password"))
                         .roles("USER")
                         .build()
