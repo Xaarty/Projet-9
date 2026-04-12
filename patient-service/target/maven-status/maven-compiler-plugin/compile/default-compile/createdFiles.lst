@@ -1,5 +1,8 @@
+com\medilabo\patient\exception\NotFoundException.class
+com\medilabo\patient\dto\PatientDTO.class
 com\medilabo\patient\PatientServiceApplication.class
 com\medilabo\patient\controller\PatientController.class
 com\medilabo\patient\model\Patient.class
 com\medilabo\patient\repository\PatientRepository.class
 com\medilabo\patient\service\PatientService.class
+com\medilabo\patient\exception\GlobalExceptionHandler.class

@@ -31,7 +31,7 @@ public class PatientController {
 
     @GetMapping("/search")
     public ResponseEntity<List<PatientDTO>> searchPatients(
-            @RequestParam(required = false) String lastName,
+            @RequestParam String lastName,
             @RequestParam(required = false) String firstName) {
         return ResponseEntity.ok(patientService.searchPatients(lastName, firstName));
     }

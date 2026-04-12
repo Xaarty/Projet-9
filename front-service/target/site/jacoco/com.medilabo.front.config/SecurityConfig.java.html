@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SecurityConfig.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">front-service</a> &gt; <a href="index.source.html" class="el_package">com.medilabo.front.config</a> &gt; <span class="el_source">SecurityConfig.java</span></div><h1>SecurityConfig.java</h1><pre class="source lang-java linenums">package com.medilabo.front.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.SecurityFilterChain;
+
+@Configuration
+<span class="nc" id="L14">public class SecurityConfig {</span>
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+<span class="nc" id="L18">        http</span>
+<span class="nc" id="L19">                .authorizeHttpRequests(auth -&gt; auth</span>
+<span class="nc" id="L20">                        .requestMatchers(&quot;/css/**&quot;, &quot;/js/**&quot;).permitAll()</span>
+<span class="nc" id="L21">                        .anyRequest().authenticated()</span>
+                )
+<span class="nc" id="L23">                .formLogin(Customizer.withDefaults())</span>
+<span class="nc" id="L24">                .logout(logout -&gt; logout</span>
+<span class="nc" id="L25">                        .logoutSuccessUrl(&quot;/login?logout&quot;)</span>
+<span class="nc" id="L26">                        .permitAll()</span>
+                );
+
+<span class="nc" id="L29">        return http.build();</span>
+    }
+
+    @Bean
+    public InMemoryUserDetailsManager userDetailsService(PasswordEncoder passwordEncoder) {
+<span class="nc" id="L34">        return new InMemoryUserDetailsManager(</span>
+<span class="nc" id="L35">                User.withUsername(&quot;doctor&quot;)</span>
+<span class="nc" id="L36">                        .password(passwordEncoder.encode(&quot;password&quot;))</span>
+<span class="nc" id="L37">                        .roles(&quot;USER&quot;)</span>
+<span class="nc" id="L38">                        .build()</span>
+        );
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+<span class="nc" id="L44">        return new BCryptPasswordEncoder();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

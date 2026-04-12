@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.medilabo.patient.controller.PatientControllerTests
+-------------------------------------------------------------------------------
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.848 s -- in com.medilabo.patient.controller.PatientControllerTests

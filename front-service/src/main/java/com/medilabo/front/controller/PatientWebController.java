@@ -1,5 +1,6 @@
 package com.medilabo.front.controller;
 
+import com.medilabo.front.dto.NotesDTO;
 import com.medilabo.front.dto.PatientDTO;
 import com.medilabo.front.service.PatientFrontService;
 import jakarta.validation.Valid;
@@ -7,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 public class PatientWebController {
@@ -28,10 +31,14 @@ public class PatientWebController {
             @RequestParam(required = false) String firstName,
             Model model) {
 
-        if (lastName != null && !lastName.isBlank()) {
-            model.addAttribute("patients", patientFrontService.searchPatients(lastName, firstName));
+        if (lastName != null) {
+            if (lastName.isBlank()) {
+                model.addAttribute("error", "Last name is required for search");
+                model.addAttribute("patients", patientFrontService.getAllPatients());
+            } else {
+                model.addAttribute("patients", patientFrontService.searchPatients(lastName, firstName));
+            }
         } else {
-            model.addAttribute("error", "Last name is required for search");
             model.addAttribute("patients", patientFrontService.getAllPatients());
         }
 
@@ -91,5 +98,28 @@ public class PatientWebController {
     public String deletePatient(@PathVariable Integer id) {
         patientFrontService.deletePatient(id);
         return "redirect:/patients";
+    }
+
+    @GetMapping("/patients/{id}/history")
+    public String showPatientHistory(@PathVariable Integer id, Model model) {
+        PatientDTO patient = patientFrontService.getPatientById(id);
+        List<NotesDTO> notes = patientFrontService.getNotesByPatientId(id);
+
+        model.addAttribute("patient", patient);
+        model.addAttribute("notes", notes);
+
+        return "patient-history";
+    }
+
+    @PostMapping("/patients/{id}/history")
+    public String addPatientNote(@PathVariable Integer id,
+                                 @RequestParam String note) {
+        NotesDTO noteDTO = new NotesDTO();
+        noteDTO.setPatientId(id);
+        noteDTO.setNote(note);
+
+        patientFrontService.createNote(noteDTO);
+
+        return "redirect:/patients/" + id + "/history";
     }
 }

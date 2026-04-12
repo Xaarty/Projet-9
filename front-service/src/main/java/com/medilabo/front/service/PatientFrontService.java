@@ -1,5 +1,6 @@
 package com.medilabo.front.service;
 
+import com.medilabo.front.dto.NotesDTO;
 import com.medilabo.front.dto.PatientDTO;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
@@ -103,5 +104,29 @@ public class PatientFrontService {
 
     private HttpHeaders createHeaders() {
         return new HttpHeaders();
+    }
+
+    public List<NotesDTO> getNotesByPatientId(Integer patientId) {
+        String url = gatewayBaseUrl + "/notes/patient/" + patientId;
+
+        ResponseEntity<List<NotesDTO>> response = restTemplate.exchange(
+                url,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<List<NotesDTO>>() {}
+        );
+
+        return response.getBody() != null ? response.getBody() : Collections.emptyList();
+    }
+
+    public void createNote(NotesDTO noteDTO) {
+        String url = gatewayBaseUrl + "/notes";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        HttpEntity<NotesDTO> entity = new HttpEntity<>(noteDTO, headers);
+
+        restTemplate.exchange(url, HttpMethod.POST, entity, NotesDTO.class);
     }
 }

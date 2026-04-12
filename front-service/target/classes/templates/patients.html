@@ -112,6 +112,7 @@
         <td th:text="${patient.phone}"></td>
         <td>
             <a class="link" th:href="@{'/patients/edit/' + ${patient.id}}">Edit</a>
+            <a class="link" th:href="@{'/patients/' + ${patient.id} + '/history'}">History</a>
 
             <form class="inline" th:action="@{'/patients/delete/' + ${patient.id}}" method="post">
                 <button type="submit" class="delete-btn"

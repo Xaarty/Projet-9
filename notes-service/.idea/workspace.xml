@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="bb60920a-260a-41ff-8420-add5e30e2fd9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../front-service/src/test/java/com/medilabo/front/controller/PatientWebControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../front-service/src/test/java/com/medilabo/front/service/PatientFrontServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/medilabo/notes/NotesServiceApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/medilabo/notes/controller/NoteController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/medilabo/notes/dto/NoteDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/medilabo/notes/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/medilabo/notes/exception/NotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/medilabo/notes/model/Note.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/medilabo/notes/repository/NoteRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/medilabo/notes/service/NoteService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../patient-service/src/test/java/com/medilabo/patient/service/PatientServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../front-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-service/src/main/java/com/medilabo/front/controller/PatientWebController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../front-service/src/main/java/com/medilabo/front/controller/PatientWebController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-service/target/classes/com/medilabo/front/controller/PatientWebController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../front-service/target/classes/com/medilabo/front/controller/PatientWebController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../patient-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../patient-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../patient-service/src/main/java/com/medilabo/patient/controller/PatientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../patient-service/src/main/java/com/medilabo/patient/controller/PatientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../patient-service/src/main/java/com/medilabo/patient/service/PatientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../patient-service/src/main/java/com/medilabo/patient/service/PatientService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../patient-service/target/classes/com/medilabo/patient/controller/PatientController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../patient-service/target/classes/com/medilabo/patient/controller/PatientController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../patient-service/target/classes/com/medilabo/patient/service/PatientService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../patient-service/target/classes/com/medilabo/patient/service/PatientService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../patient-service/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../patient-service/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../patient-service/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../patient-service/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../patient-service/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../patient-service/target/patient-service-0.0.1-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../patient-service/target/patient-service-0.0.1-SNAPSHOT.jar.original" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Xaarty"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Xaarty/Projet-9.git",
+    "accountId": "7a83320e-f7f7-4c94-8a2f-d8a6bb5d3878"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 4
+}]]></component>
+  <component name="ProjectId" id="3C8Kl9RpqJaNVl0fbdJEGpTZGJV" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/caill/Desktop/Projetopen Java/Projet9"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bb60920a-260a-41ff-8420-add5e30e2fd9" name="Changes" comment="" />
+      <created>1775761905428</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1775761905428</updated>
+    </task>
+    <servers />
+  </component>
+</project>

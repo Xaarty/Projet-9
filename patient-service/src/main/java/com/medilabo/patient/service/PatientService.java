@@ -45,7 +45,7 @@ public class PatientService {
 
     public PatientDTO updatePatient(Integer id, PatientDTO dto) {
         Patient patient = patientRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("patient not found"));
+                .orElseThrow(() -> new NotFoundException("Patient not found with id: " + id));
 
         patient.setFirstName(dto.getFirstName());
         patient.setLastName(dto.getLastName());
