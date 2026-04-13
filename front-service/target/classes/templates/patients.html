@@ -3,126 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <title>Patients</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-        }
-
-        h1 {
-            margin-bottom: 20px;
-        }
-
-        a.button, button.button {
-            display: inline-block;
-            margin-bottom: 20px;
-            padding: 10px 14px;
-            background-color: #2d6cdf;
-            color: white;
-            text-decoration: none;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .search-form {
-            margin-bottom: 20px;
-        }
-
-        .search-form input {
-            padding: 8px;
-            margin-right: 10px;
-        }
-
-        .search-form button,
-        .search-form a {
-            padding: 8px 12px;
-            text-decoration: none;
-            border-radius: 4px;
-        }
-
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        th, td {
-            border: 1px solid #ccc;
-            padding: 10px;
-            text-align: left;
-        }
-
-        th {
-            background: #f4f4f4;
-        }
-
-        a.link {
-            text-decoration: none;
-            color: #2d6cdf;
-            margin-right: 10px;
-        }
-
-        form.inline {
-            display: inline;
-        }
-
-        button.delete-btn {
-            background-color: #d9534f;
-            color: white;
-            border: none;
-            padding: 6px 10px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<h1>Patient List</h1>
+<header class="site-header">
+    <div class="header-container">
+        <a th:href="@{/patients}" class="brand">
+            <img th:src="@{/images/logo.png}" alt="MediLabo Solutions" class="brand-logo">
+            <div class="brand-text">
+                <span class="brand-title">MediLabo Solutions</span>
+            </div>
+        </a>
 
-<a class="button" th:href="@{/patients/add}">Add Patient</a>
+        <nav class="main-nav">
+            <a th:href="@{/patients}" class="nav-link">Patients</a>
+            <a th:href="@{/patients/add}" class="nav-link">Add Patient</a>
 
-<form class="search-form" th:action="@{/patients}" method="get">
-    <input type="text" name="lastName" placeholder="Last name" th:value="${lastName}" required>
-    <input type="text" name="firstName" placeholder="First name" th:value="${firstName}">
-    <button type="submit">Search</button>
-    <a th:href="@{/patients}">Reset</a>
-</form>
+            <form th:action="@{/logout}" method="post" class="logout-form">
+                <button type="submit" class="logout-btn">Logout</button>
+            </form>
+        </nav>
+    </div>
+</header>
+<div class="container">
+    <h1 class="page-title">Patient List</h1>
 
-<table>
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Birth Date</th>
-        <th>Gender</th>
-        <th>Address</th>
-        <th>Phone</th>
-        <th>Action</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="patient : ${patients}">
-        <td th:text="${patient.id}"></td>
-        <td th:text="${patient.firstName}"></td>
-        <td th:text="${patient.lastName}"></td>
-        <td th:text="${patient.birthDate}"></td>
-        <td th:text="${patient.gender}"></td>
-        <td th:text="${patient.address}"></td>
-        <td th:text="${patient.phone}"></td>
-        <td>
-            <a class="link" th:href="@{'/patients/edit/' + ${patient.id}}">Edit</a>
-            <a class="link" th:href="@{'/patients/' + ${patient.id} + '/history'}">History</a>
+    <div class="card">
+        <div class="actions-bar">
+            <a class="button" th:href="@{/patients/add}">Add Patient</a>
 
-            <form class="inline" th:action="@{'/patients/delete/' + ${patient.id}}" method="post">
-                <button type="submit" class="delete-btn"
-                        onclick="return confirm('Are you sure you want to delete this patient?')">
-                    Delete
+            <form class="search-form" th:action="@{/patients}" method="get">
+                <input class="input" type="text" name="lastName" placeholder="Last name" th:value="${lastName}" required>
+                <input class="input" type="text" name="firstName" placeholder="First name" th:value="${firstName}">
+
+                <button type="submit" class="button">Search</button>
+
+                <button type="button"
+                        class="button button-secondary"
+                        onclick="window.location.href='/patients'">
+                    Reset
                 </button>
             </form>
-        </td>
-    </tr>
-    </tbody>
-</table>
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Birth Date</th>
+                    <th>Gender</th>
+                    <th>Address</th>
+                    <th>Phone</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="patient : ${patients}">
+                    <td class="patient-id" th:text="${patient.id}"></td>
+                    <td class="patient-name" th:text="${patient.firstName}"></td>
+                    <td class="patient-name" th:text="${patient.lastName}"></td>
+                    <td class="patient-muted" th:text="${patient.birthDate}"></td>
+                    <td>
+                        <span class="gender-badge" th:text="${patient.gender}"></span>
+                    </td>
+                    <td th:text="${patient.address}"></td>
+                    <td th:text="${patient.phone}"></td>
+                    <td>
+                        <div class="action-group">
+                            <a class="link" th:href="@{'/patients/edit/' + ${patient.id}}">Edit</a>
+                            <a class="link" th:href="@{'/patients/' + ${patient.id} + '/history'}">History</a>
+
+                            <form class="inline" th:action="@{'/patients/delete/' + ${patient.id}}" method="post">
+                                <button type="submit"
+                                        class="delete-btn"
+                                        onclick="return confirm('Are you sure you want to delete this patient?')">
+                                    Delete
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 </body>
 </html>

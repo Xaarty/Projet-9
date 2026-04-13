@@ -3,101 +3,117 @@
 <head>
   <meta charset="UTF-8">
   <title>Patient History</title>
-  <style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 40px;
-    }
-
-    h1, h2 {
-        margin-bottom: 20px;
-    }
-
-    .info {
-        margin-bottom: 30px;
-    }
-
-    .info p {
-        margin: 6px 0;
-    }
-
-    .note-card {
-        border: 1px solid #ccc;
-        padding: 12px;
-        margin-bottom: 12px;
-        border-radius: 4px;
-        background: #f9f9f9;
-    }
-
-    .note-date {
-        color: #666;
-        font-size: 0.9em;
-    }
-
-    form {
-        margin-top: 20px;
-        max-width: 600px;
-    }
-
-    textarea {
-        width: 100%;
-        min-height: 100px;
-        padding: 10px;
-        box-sizing: border-box;
-    }
-
-    button, a.button {
-        margin-top: 15px;
-        padding: 10px 14px;
-        border: none;
-        border-radius: 4px;
-        text-decoration: none;
-        cursor: pointer;
-    }
-
-    button {
-        background-color: #2d6cdf;
-        color: white;
-    }
-
-    a.button {
-        background-color: #999;
-        color: white;
-        display: inline-block;
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
+
 <body>
-<h1>Patient History</h1>
 
-<div class="info">
-  <p><strong>ID:</strong> <span th:text="${patient.id}"></span></p>
-  <p><strong>First Name:</strong> <span th:text="${patient.firstName}"></span></p>
-  <p><strong>Last Name:</strong> <span th:text="${patient.lastName}"></span></p>
-  <p><strong>Birth Date:</strong> <span th:text="${patient.birthDate}"></span></p>
-  <p><strong>Gender:</strong> <span th:text="${patient.gender}"></span></p>
+<header class="site-header">
+  <div class="header-container">
+    <a th:href="@{/patients}" class="brand">
+      <img th:src="@{/images/logo.png}" alt="MediLabo Solutions" class="brand-logo">
+      <div class="brand-text">
+        <span class="brand-title">MediLabo Solutions</span>
+      </div>
+    </a>
+
+    <nav class="main-nav">
+      <a th:href="@{/patients}" class="nav-link">Patients</a>
+      <a th:href="@{/patients/add}" class="nav-link">Add Patient</a>
+
+      <form th:action="@{/logout}" method="post" class="logout-form">
+        <button type="submit" class="nav-link nav-button">Logout</button>
+      </form>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <h1 class="page-title">Patient History</h1>
+
+  <div class="history-layout">
+
+    <div class="card patient-summary-card">
+      <div class="section-header">
+        <h2 class="section-title">Patient information</h2>
+        <span class="patient-id-badge" th:text="'ID #' + ${patient.id}">ID #2</span>
+      </div>
+
+      <div class="patient-info-grid">
+        <div class="info-item">
+          <span class="info-label">First Name</span>
+          <span class="info-value" th:text="${patient.firstName}"></span>
+        </div>
+
+        <div class="info-item">
+          <span class="info-label">Last Name</span>
+          <span class="info-value" th:text="${patient.lastName}"></span>
+        </div>
+
+        <div class="info-item">
+          <span class="info-label">Birth Date</span>
+          <span class="info-value" th:text="${patient.birthDate}"></span>
+        </div>
+
+        <div class="info-item">
+          <span class="info-label">Gender</span>
+          <span class="info-value" th:text="${patient.gender}"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card notes-card">
+      <div class="section-header">
+        <h2 class="section-title">Notes</h2>
+        <span class="notes-count" th:text="${#lists.size(notes)} + ' note(s)'">2 note(s)</span>
+      </div>
+
+      <div th:if="${#lists.isEmpty(notes)}" class="empty-state">
+        No notes available for this patient.
+      </div>
+
+      <div class="notes-list" th:if="${!#lists.isEmpty(notes)}">
+        <div th:each="noteItem : ${notes}" class="note-card">
+          <div class="note-card-header">
+            <span class="note-date"
+                  th:text="${#temporals.format(noteItem.createdAt, 'dd/MM/yyyy HH:mm')}">
+              13/04/2026 17:31
+            </span>
+
+            <button type="button" class="button button-secondary note-edit-btn">
+              Edit note
+            </button>
+          </div>
+
+          <p class="note-text" th:text="${noteItem.note}"></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card add-note-card">
+      <div class="section-header">
+        <h2 class="section-title">Add a note</h2>
+      </div>
+
+      <form th:action="@{'/patients/' + ${patient.id} + '/history'}" method="post" class="add-note-form">
+        <div class="form-group">
+          <label for="note" class="form-label">Clinical note</label>
+          <textarea id="note" name="note" class="input textarea-input" placeholder="Enter a note" required></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="button">Add note</button>
+          <button type="button" class="button button-secondary"
+                  onclick="window.location.href='/patients'">
+            Back to patients
+          </button>
+        </div>
+      </form>
+    </div>
+
+  </div>
 </div>
 
-<h2>Notes</h2>
-
-<div th:if="${#lists.isEmpty(notes)}">
-  <p>No notes available for this patient.</p>
-</div>
-
-<div th:each="noteItem : ${notes}" class="note-card">
-  <p th:text="${noteItem.note}"></p>
-  <p class="note-date" th:text="${noteItem.createdAt}"></p>
-</div>
-
-<h2>Add a note</h2>
-
-<form th:action="@{'/patients/' + ${patient.id} + '/history'}" method="post">
-  <textarea name="note" placeholder="Enter a note" required></textarea>
-  <br>
-  <button type="submit">Add Note</button>
-</form>
-
-<br>
-<a class="button" th:href="@{/patients}">Back to patients</a>
 </body>
 </html>
