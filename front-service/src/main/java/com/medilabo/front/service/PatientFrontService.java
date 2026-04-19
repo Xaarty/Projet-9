@@ -1,5 +1,6 @@
 package com.medilabo.front.service;
 
+import com.medilabo.front.dto.AssessmentDTO;
 import com.medilabo.front.dto.NotesDTO;
 import com.medilabo.front.dto.PatientDTO;
 import org.springframework.beans.factory.annotation.Value;
@@ -128,5 +129,27 @@ public class PatientFrontService {
         HttpEntity<NotesDTO> entity = new HttpEntity<>(noteDTO, headers);
 
         restTemplate.exchange(url, HttpMethod.POST, entity, NotesDTO.class);
+    }
+
+    public AssessmentDTO getAssessmentByPatientId(Integer id) {
+        return restTemplate.getForObject(
+                gatewayBaseUrl + "/assess/" + id,
+                AssessmentDTO.class
+        );
+    }
+
+    public NotesDTO getNoteById(String id) {
+        return restTemplate.getForObject(
+                gatewayBaseUrl + "/notes/" + id,
+                NotesDTO.class
+        );
+    }
+
+    public NotesDTO updateNote(String id, NotesDTO noteDTO) {
+        restTemplate.put(
+                gatewayBaseUrl + "/notes/" + id,
+                noteDTO
+        );
+        return getNoteById(id);
     }
 }

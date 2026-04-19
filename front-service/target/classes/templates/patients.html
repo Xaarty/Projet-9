@@ -6,7 +6,9 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
+
 <header class="site-header">
     <div class="header-container">
         <a th:href="@{/patients}" class="brand">
@@ -21,11 +23,12 @@
             <a th:href="@{/patients/add}" class="nav-link">Add Patient</a>
 
             <form th:action="@{/logout}" method="post" class="logout-form">
-                <button type="submit" class="logout-btn">Logout</button>
+                <button type="submit" class="nav-link nav-button">Logout</button>
             </form>
         </nav>
     </div>
 </header>
+
 <div class="container">
     <h1 class="page-title">Patient List</h1>
 

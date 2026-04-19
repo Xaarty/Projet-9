@@ -535,6 +535,68 @@ tbody tr:hover td {
     line-height: 1.5;
 }
 
+
+.assessment-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(180px, 1fr));
+    gap: 20px 24px;
+}
+
+.assessment-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    min-width: 120px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.assessment-none {
+    background: #f3f4f6;
+    color: #374151;
+}
+
+.assessment-borderline {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.assessment-indanger {
+    background: #fed7aa;
+    color: #9a3412;
+}
+
+.assessment-earlyonset {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.assessment-triggers {
+    margin-top: 24px;
+}
+
+.trigger-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.trigger-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: #eef2ff;
+    color: #1d4ed8;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
 /* Responsive */
 
 @media (max-width: 900px) {
@@ -542,6 +604,10 @@ tbody tr:hover td {
     .form-grid {
         grid-template-columns: 1fr;
     }
+
+    .assessment-grid {
+            grid-template-columns: 1fr;
+        }
 }
 
 @media (max-width: 768px) {

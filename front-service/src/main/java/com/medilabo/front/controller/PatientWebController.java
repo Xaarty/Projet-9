@@ -1,5 +1,6 @@
 package com.medilabo.front.controller;
 
+import com.medilabo.front.dto.AssessmentDTO;
 import com.medilabo.front.dto.NotesDTO;
 import com.medilabo.front.dto.PatientDTO;
 import com.medilabo.front.service.PatientFrontService;
@@ -104,9 +105,11 @@ public class PatientWebController {
     public String showPatientHistory(@PathVariable Integer id, Model model) {
         PatientDTO patient = patientFrontService.getPatientById(id);
         List<NotesDTO> notes = patientFrontService.getNotesByPatientId(id);
+        AssessmentDTO assessment = patientFrontService.getAssessmentByPatientId(id);
 
         model.addAttribute("patient", patient);
         model.addAttribute("notes", notes);
+        model.addAttribute("assessment", assessment);
 
         return "patient-history";
     }
@@ -121,5 +124,29 @@ public class PatientWebController {
         patientFrontService.createNote(noteDTO);
 
         return "redirect:/patients/" + id + "/history";
+    }
+
+    @GetMapping("/patients/{patientId}/history/edit-note/{noteId}")
+    public String showEditNoteForm(@PathVariable Integer patientId,
+                                   @PathVariable String noteId,
+                                   Model model) {
+        NotesDTO note = patientFrontService.getNoteById(noteId);
+
+        model.addAttribute("noteItem", note);
+        model.addAttribute("patientId", patientId);
+
+        return "note-form";
+    }
+
+    @PostMapping("/patients/{patientId}/history/edit-note/{noteId}")
+    public String updatePatientNote(@PathVariable Integer patientId,
+                                    @PathVariable String noteId,
+                                    @RequestParam String note) {
+        NotesDTO noteDTO = patientFrontService.getNoteById(noteId);
+        noteDTO.setNote(note);
+
+        patientFrontService.updateNote(noteId, noteDTO);
+
+        return "redirect:/patients/" + patientId + "/history";
     }
 }

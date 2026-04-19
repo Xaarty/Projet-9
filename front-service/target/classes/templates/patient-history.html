@@ -6,6 +6,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
+
 <body>
 
 <header class="site-header">
@@ -22,7 +23,7 @@
       <a th:href="@{/patients/add}" class="nav-link">Add Patient</a>
 
       <form th:action="@{/logout}" method="post" class="logout-form">
-        <button type="submit" class="logout-btn">Logout</button>
+        <button type="submit" class="nav-link nav-button">Logout</button>
       </form>
     </nav>
   </div>
@@ -62,6 +63,50 @@
       </div>
     </div>
 
+    <div class="card assessment-card">
+      <div class="section-header">
+        <h2 class="section-title">Diabetes assessment</h2>
+      </div>
+
+      <div class="assessment-grid">
+        <div class="info-item">
+          <span class="info-label">Risk level</span>
+          <span class="assessment-badge"
+                th:classappend="
+                  ${assessment.assessment == 'None'} ? ' assessment-none' :
+                  (${assessment.assessment == 'Borderline'} ? ' assessment-borderline' :
+                  (${assessment.assessment == 'InDanger'} ? ' assessment-indanger' :
+                  (${assessment.assessment == 'EarlyOnset'} ? ' assessment-earlyonset' : '')))"
+                th:text="${assessment.assessment}">
+            None
+          </span>
+        </div>
+
+        <div class="info-item">
+          <span class="info-label">Age</span>
+          <span class="info-value" th:text="${assessment.age}">45</span>
+        </div>
+
+        <div class="info-item">
+          <span class="info-label">Trigger count</span>
+          <span class="info-value" th:text="${assessment.triggerCount}">0</span>
+        </div>
+      </div>
+
+      <div class="assessment-triggers" th:if="${assessment.matchedTriggers != null and !#lists.isEmpty(assessment.matchedTriggers)}">
+        <span class="info-label">Matched keywords</span>
+
+        <div class="trigger-list">
+          <span class="trigger-chip"
+                th:each="trigger : ${assessment.matchedTriggers}"
+                th:text="${trigger}">
+            smoker
+          </span>
+        </div>
+      </div>
+
+    </div>
+
     <div class="card notes-card">
       <div class="section-header">
         <h2 class="section-title">Notes</h2>
@@ -80,9 +125,10 @@
               13/04/2026 17:31
             </span>
 
-            <button type="button" class="button button-secondary note-edit-btn">
+            <a class="button button-secondary note-edit-btn"
+               th:href="@{'/patients/' + ${patient.id} + '/history/edit-note/' + ${noteItem.id}}">
               Edit note
-            </button>
+            </a>
           </div>
 
           <p class="note-text" th:text="${noteItem.note}"></p>
