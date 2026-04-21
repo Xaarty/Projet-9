@@ -1,6 +1,10 @@
-C:\Users\caill\Desktop\Projetopen Java\Projet9\Projet-9\front-service\src\main\java\com\medilabo\front\config\SecurityConfig.java
-C:\Users\caill\Desktop\Projetopen Java\Projet9\Projet-9\front-service\src\main\java\com\medilabo\front\config\AppConfig.java
-C:\Users\caill\Desktop\Projetopen Java\Projet9\Projet-9\front-service\src\main\java\com\medilabo\front\dto\PatientDTO.java
-C:\Users\caill\Desktop\Projetopen Java\Projet9\Projet-9\front-service\src\main\java\com\medilabo\front\FrontServiceApplication.java
-C:\Users\caill\Desktop\Projetopen Java\Projet9\Projet-9\front-service\src\main\java\com\medilabo\front\service\PatientFrontService.java
-C:\Users\caill\Desktop\Projetopen Java\Projet9\Projet-9\front-service\src\main\java\com\medilabo\front\controller\PatientWebController.java
+C:\Users\Public\Documents\Projet Open\untitled\front-service\src\main\java\com\medilabo\front\config\SecurityConfig.java
+C:\Users\Public\Documents\Projet Open\untitled\front-service\src\main\java\com\medilabo\front\controller\PatientWebController.java
+C:\Users\Public\Documents\Projet Open\untitled\front-service\src\main\java\com\medilabo\front\FrontServiceApplication.java
+C:\Users\Public\Documents\Projet Open\untitled\front-service\src\main\java\com\medilabo\front\dto\PatientDTO.java
+C:\Users\Public\Documents\Projet Open\untitled\front-service\src\main\java\com\medilabo\front\config\AppConfig.java
+C:\Users\Public\Documents\Projet Open\untitled\front-service\src\main\java\com\medilabo\front\controller\AuthController.java
+C:\Users\Public\Documents\Projet Open\untitled\front-service\src\main\java\com\medilabo\front\service\PatientFrontService.java
+C:\Users\Public\Documents\Projet Open\untitled\front-service\src\main\java\com\medilabo\front\dto\AssessmentDTO.java
+C:\Users\Public\Documents\Projet Open\untitled\front-service\src\main\java\com\medilabo\front\service\AssessmentClientService.java
+C:\Users\Public\Documents\Projet Open\untitled\front-service\src\main\java\com\medilabo\front\dto\NotesDTO.java

@@ -15,6 +15,7 @@ public class AssessmentController {
         this.assessmentService = assessmentService;
     }
 
+    //Récupération des risques (diabete)
     @GetMapping("/assess/{patientId}")
     public AssessmentResponseDTO assessPatient(@PathVariable Integer patientId) {
         return assessmentService.assessPatient(patientId);

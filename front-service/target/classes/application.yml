@@ -6,4 +6,4 @@ spring:
     name: front-service
 
 gateway:
-  base-url: http://localhost:8080
+  base-url: ${GATEWAY_BASE_URL:http://localhost:8080}

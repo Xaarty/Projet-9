@@ -1,6 +1,7 @@
 package com.medilabo.assessment.client;
 
 import com.medilabo.assessment.dto.NoteDTO;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
@@ -17,9 +18,12 @@ public class NotesClient {
         this.restTemplate = restTemplate;
     }
 
+    @Value("${notes-service.base-url}")
+    private String notesServiceBaseUrl;
+
     public List<NoteDTO> getNotesByPatientId(Integer patientId) {
         return restTemplate.exchange(
-                "http://localhost:8083/notes/patient/" + patientId,
+                notesServiceBaseUrl + "/notes/patient/" + patientId,
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<List<NoteDTO>>() {}

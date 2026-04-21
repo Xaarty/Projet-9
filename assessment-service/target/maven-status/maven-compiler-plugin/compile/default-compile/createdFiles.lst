@@ -1,0 +1,10 @@
+com\medilabo\assessment\client\NotesClient$1.class
+com\medilabo\assessment\dto\NoteDTO.class
+com\medilabo\assessment\dto\PatientDTO.class
+com\medilabo\assessment\service\AssessmentService.class
+com\medilabo\assessment\client\PatientClient.class
+com\medilabo\assessment\dto\AssessmentResponseDTO.class
+com\medilabo\assessment\AssessmentApplication.class
+com\medilabo\assessment\client\NotesClient.class
+com\medilabo\assessment\config\RestTemplateConfig.class
+com\medilabo\assessment\controller\AssessmentController.class

@@ -4,3 +4,9 @@ server:
 spring:
   application:
     name: assessment-service
+
+patient-service:
+  base-url: ${PATIENT_SERVICE_URL:http://localhost:8081}
+
+notes-service:
+  base-url: ${NOTES_SERVICE_URL:http://localhost:8083}

@@ -1,0 +1,92 @@
+version: "3.8"
+
+services:
+  patient-db:
+    image: mysql:8.0
+    container_name: patient-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: medilabo
+      MYSQL_USER: medilabo
+      MYSQL_PASSWORD: medilabo
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - patient_db_data:/var/lib/mysql
+
+  mongo:
+    image: mongo:7
+    container_name: mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  patient-service:
+    build: ./patient-service
+    container_name: patient-service
+    restart: unless-stopped
+    ports:
+      - "8081:8081"
+    depends_on:
+      - patient-db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://patient-db:3306/medilabo?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: medilabo
+      SPRING_DATASOURCE_PASSWORD: medilabo
+
+  notes-service:
+    build: ./notes-service
+    container_name: notes-service
+    restart: unless-stopped
+    ports:
+      - "8083:8083"
+    depends_on:
+      - mongo
+    environment:
+      SPRING_DATA_MONGODB_URI: mongodb://mongo:27017/medilabo-notes
+
+  assessment-service:
+    build: ./assessment-service
+    container_name: assessment-service
+    restart: unless-stopped
+    ports:
+      - "8084:8084"
+    depends_on:
+      - patient-service
+      - notes-service
+    environment:
+      PATIENT_SERVICE_URL: http://patient-service:8081
+      NOTES_SERVICE_URL: http://notes-service:8083
+
+  gateway-service:
+    build: ./gateway-service
+    container_name: gateway-service
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    depends_on:
+      - patient-service
+      - notes-service
+      - assessment-service
+    environment:
+      PATIENT_SERVICE_URI: http://patient-service:8081
+      NOTES_SERVICE_URI: http://notes-service:8083
+      ASSESSMENT_SERVICE_URI: http://assessment-service:8084
+
+  front-service:
+    build: ./front-service
+    container_name: front-service
+    restart: unless-stopped
+    ports:
+      - "8082:8082"
+    depends_on:
+      - gateway-service
+    environment:
+      GATEWAY_BASE_URL: http://gateway-service:8080
+
+volumes:
+  patient_db_data:
+  mongo_data:

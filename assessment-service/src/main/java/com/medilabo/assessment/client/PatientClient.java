@@ -1,6 +1,7 @@
 package com.medilabo.assessment.client;
 
 import com.medilabo.assessment.dto.PatientDTO;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -13,9 +14,12 @@ public class PatientClient {
         this.restTemplate = restTemplate;
     }
 
+    @Value("${patient-service.base-url}")
+    private String patientServiceBaseUrl;
+
     public PatientDTO getPatientById(Integer patientId) {
         return restTemplate.getForObject(
-                "http://localhost:8081/patients/" + patientId,
+                patientServiceBaseUrl + "/patients/" + patientId,
                 PatientDTO.class
         );
     }
