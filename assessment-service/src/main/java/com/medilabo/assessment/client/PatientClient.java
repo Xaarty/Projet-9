@@ -14,6 +14,7 @@ public class PatientClient {
         this.restTemplate = restTemplate;
     }
 
+    // URL de base injectée depuis application.yml ou les variables d’environnement Docker
     @Value("${patient-service.base-url}")
     private String patientServiceBaseUrl;
 

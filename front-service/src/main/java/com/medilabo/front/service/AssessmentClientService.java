@@ -9,6 +9,7 @@ import org.springframework.web.client.RestTemplate;
 public class AssessmentClientService {
 
     private final RestTemplate restTemplate;
+    // URL de la gateway
     private final String gatewayBaseUrl;
 
     public AssessmentClientService(RestTemplate restTemplate,
@@ -17,6 +18,7 @@ public class AssessmentClientService {
         this.gatewayBaseUrl = gatewayBaseUrl;
     }
 
+    // Appelle l'assessment via la gateway
     public AssessmentDTO getAssessmentByPatientId(Integer patientId) {
         return restTemplate.getForObject(
                 gatewayBaseUrl + "/assess/" + patientId,

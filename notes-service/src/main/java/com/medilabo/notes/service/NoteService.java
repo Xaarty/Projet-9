@@ -18,6 +18,7 @@ public class NoteService {
         this.noteRepository = noteRepository;
     }
 
+    //Récupéreation des notes d'un patient
     public List<NoteDTO> getNotesByPatientId(Integer patientId) {
         if (patientId == null) {
             throw new IllegalArgumentException("Patient id is required");
@@ -29,6 +30,7 @@ public class NoteService {
                 .toList();
     }
 
+    //Récupération d'une note
     public NoteDTO getNoteById(String id) {
         Note note = noteRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Note not found with id: " + id));
@@ -36,6 +38,7 @@ public class NoteService {
         return convertToDTO(note);
     }
 
+    //Création d'une note
     public NoteDTO createNote(NoteDTO dto) {
         Note note = new Note();
         note.setPatientId(dto.getPatientId());
@@ -46,6 +49,7 @@ public class NoteService {
         return convertToDTO(savedNote);
     }
 
+    //Modification d'une note
     public void deleteNote(String id) {
         if (!noteRepository.existsById(id)) {
             throw new NotFoundException("Note not found with id: " + id);
@@ -54,6 +58,7 @@ public class NoteService {
         noteRepository.deleteById(id);
     }
 
+    //Suppression d'une note
     public NoteDTO updateNote(String id, NoteDTO dto) {
         Note existingNote = noteRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Note not found with id: " + id));
@@ -65,6 +70,7 @@ public class NoteService {
         return convertToDTO(updatedNote);
     }
 
+    // Convertit l’entité MongoDB pour la manipuler
     private NoteDTO convertToDTO(Note note) {
         return new NoteDTO(
                 note.getId(),

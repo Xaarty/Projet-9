@@ -17,6 +17,7 @@ public class PatientService {
         this.patientRepository = patientRepository;
     }
 
+    //Récupération de tout les patients
     public List<PatientDTO> getAllPatients() {
         return patientRepository.findAll()
                 .stream()
@@ -24,12 +25,14 @@ public class PatientService {
                 .toList();
     }
 
+    //Récupération d'un patient par ID
     public PatientDTO getPatientById(Integer id) {
         Patient patient = patientRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Patient not found with id: " + id));
         return convertToDTO(patient);
     }
 
+    //Création d'un patient
     public PatientDTO createPatient(PatientDTO dto) {
         Patient patient = new Patient();
         patient.setFirstName(dto.getFirstName());
@@ -43,6 +46,7 @@ public class PatientService {
         return convertToDTO(savedPatient);
     }
 
+    //Modification de données patient
     public PatientDTO updatePatient(Integer id, PatientDTO dto) {
         Patient patient = patientRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Patient not found with id: " + id));
@@ -58,6 +62,7 @@ public class PatientService {
         return convertToDTO(updatedPatient);
     }
 
+    //Suppression d'un patient
     public void deletePatient(Integer id) {
         if (!patientRepository.existsById(id)) {
             throw new NotFoundException("Patient not found with id: " + id);
@@ -66,6 +71,7 @@ public class PatientService {
         patientRepository.deleteById(id);
     }
 
+    //Recherche de patient par nom voir prénom si renseigné
     public List<PatientDTO> searchPatients(String lastName, String firstName) {
         if (lastName == null || lastName.isBlank()) {
             throw new IllegalArgumentException("lastName is required");
@@ -84,6 +90,7 @@ public class PatientService {
                 .toList();
     }
 
+    // Convertit l’entité MongoDB pour la manipuler
     private PatientDTO convertToDTO(Patient patient) {
         return new PatientDTO(
                 patient.getId(),

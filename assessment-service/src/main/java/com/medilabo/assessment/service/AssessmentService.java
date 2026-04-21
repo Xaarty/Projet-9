@@ -19,18 +19,20 @@ import java.util.Set;
 @Service
 public class AssessmentService {
 
+    // Liste des déclencheurs medicaux
     private static final List<String> TRIGGERS = List.of(
             "hemoglobin a1c",
             "microalbumin",
-            "height",
-            "weight",
-            "smoker",
-            "abnormal",
+            "taille",
+            "poids",
+            "fumeur",
+            "fumeuse",
+            "anormal",
             "cholesterol",
-            "dizziness",
-            "relapse",
+            "vertiges",
+            "rechute",
             "reaction",
-            "antibodies"
+            "anticorps"
     );
 
     private final PatientClient patientClient;
@@ -42,14 +44,21 @@ public class AssessmentService {
     }
 
     public AssessmentResponseDTO assessPatient(Integer patientId) {
+        // Récupération des données patient et des notes via microservices
         PatientDTO patient = patientClient.getPatientById(patientId);
         List<NoteDTO> notes = notesClient.getNotesByPatientId(patientId);
 
+        // Calcul de l’âge du patient
         int age = calculateAge(patient.getBirthDate());
+
+        // Recherche des déclencheurs dans les notes
         List<String> matchedTriggers = findMatchedTriggers(notes);
         int triggerCount = matchedTriggers.size();
+
+        // Détermination du niveau de risque selon les règles métier
         String assessment = determineAssessment(age, patient.getGender(), triggerCount);
 
+        // Réponse envoyé au front
         AssessmentResponseDTO response = new AssessmentResponseDTO();
         response.setPatientId(patient.getId());
         response.setFirstName(patient.getFirstName());
@@ -62,10 +71,12 @@ public class AssessmentService {
         return response;
     }
 
+    // Calcul de l’âge
     int calculateAge(LocalDate birthDate) {
         return Period.between(birthDate, LocalDate.now()).getYears();
     }
 
+    // Retourneles nombre déclencheurs
     int countTriggers(List<NoteDTO> notes) {
         return findMatchedTriggers(notes).size();
     }
@@ -75,12 +86,14 @@ public class AssessmentService {
             return List.of();
         }
 
+        // Concatènation des notes pour rechercher les mots-clés plus facilement
         String combinedNotes = notes.stream()
                 .map(NoteDTO::getNote)
                 .filter(note -> note != null && !note.isBlank())
                 .map(this::normalize)
                 .reduce("", (a, b) -> a + " " + b);
 
+        // Gestion des doublons
         Set<String> matched = new LinkedHashSet<>();
 
         for (String trigger : TRIGGERS) {
@@ -96,6 +109,7 @@ public class AssessmentService {
         boolean isMale = "M".equalsIgnoreCase(gender);
         boolean isFemale = "F".equalsIgnoreCase(gender);
 
+        // Cas des patients de plus de 30 ans
         if (age > 30) {
             if (triggerCount >= 8) {
                 return "EarlyOnset";
@@ -109,6 +123,7 @@ public class AssessmentService {
             return "None";
         }
 
+        // Cas des hommes de moins de 30 ans
         if (isMale) {
             if (triggerCount >= 5) {
                 return "EarlyOnset";
@@ -119,6 +134,7 @@ public class AssessmentService {
             return "None";
         }
 
+        // Cas des femmes de moins de 30 ans
         if (isFemale) {
             if (triggerCount >= 7) {
                 return "EarlyOnset";
@@ -132,6 +148,7 @@ public class AssessmentService {
         return "None";
     }
 
+    // Supprime les accents et converti en minuscules pour recherche de mots clé
     String normalize(String input) {
         String normalized = Normalizer.normalize(input, Normalizer.Form.NFD);
         return normalized.replaceAll("\\p{M}", "").toLowerCase(Locale.ROOT);

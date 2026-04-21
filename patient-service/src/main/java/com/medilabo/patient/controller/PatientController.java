@@ -19,16 +19,19 @@ public class PatientController {
         this.patientService = patientService;
     }
 
+    //Récupération de tout les patients
     @GetMapping
     public List<PatientDTO> getAllPatients() {
         return patientService.getAllPatients();
     }
 
+    //Récupération d'un patient par ID
     @GetMapping("/{id}")
     public ResponseEntity<PatientDTO> getPatientById(@PathVariable Integer id) {
         return ResponseEntity.ok(patientService.getPatientById(id));
     }
 
+    //Recherche de patient par nom voir prénom si renseigné
     @GetMapping("/search")
     public ResponseEntity<List<PatientDTO>> searchPatients(
             @RequestParam String lastName,
@@ -36,17 +39,20 @@ public class PatientController {
         return ResponseEntity.ok(patientService.searchPatients(lastName, firstName));
     }
 
+    //Création d'un patient
     @PostMapping
     public ResponseEntity<PatientDTO> createPatient(@Valid @RequestBody PatientDTO patientDTO) {
         return ResponseEntity.ok(patientService.createPatient(patientDTO));
     }
 
+    //Modification de données patient
     @PutMapping("/{id}")
     public ResponseEntity<PatientDTO> updatePatient(@PathVariable Integer id,
                                                     @Valid @RequestBody PatientDTO patientDTO) {
         return ResponseEntity.ok(patientService.updatePatient(id, patientDTO));
     }
 
+    //Suppression d'un patient
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePatient(@PathVariable Integer id) {
         patientService.deletePatient(id);

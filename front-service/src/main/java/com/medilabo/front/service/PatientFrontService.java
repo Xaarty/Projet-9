@@ -16,6 +16,7 @@ import java.util.List;
 public class PatientFrontService {
 
     private final RestTemplate restTemplate;
+    // URL de la gateway
     private final String gatewayBaseUrl;
 
     public PatientFrontService(RestTemplate restTemplate,
@@ -24,6 +25,7 @@ public class PatientFrontService {
         this.gatewayBaseUrl = gatewayBaseUrl;
     }
 
+    // Retourne la liste complète des patients
     public List<PatientDTO> getAllPatients() {
         String url = gatewayBaseUrl + "/patients";
 
@@ -54,6 +56,7 @@ public class PatientFrontService {
         return response.getBody();
     }
 
+    // Création d’un patient
     public void createPatient(PatientDTO patientDTO) {
         String url = gatewayBaseUrl + "/patients";
 
@@ -65,6 +68,7 @@ public class PatientFrontService {
         restTemplate.exchange(url, HttpMethod.POST, entity, PatientDTO.class);
     }
 
+    //Modification d'un patient
     public void updatePatient(Integer id, PatientDTO patientDTO) {
         String url = gatewayBaseUrl + "/patients/" + id;
 
@@ -76,6 +80,7 @@ public class PatientFrontService {
         restTemplate.exchange(url, HttpMethod.PUT, entity, PatientDTO.class);
     }
 
+    //Cherche un patient via nom de famille et prénom si renseigné
     public List<PatientDTO> searchPatients(String lastName, String firstName) {
         StringBuilder url = new StringBuilder(gatewayBaseUrl + "/patients/search?lastName=" + lastName);
 
@@ -95,6 +100,7 @@ public class PatientFrontService {
         return response.getBody() != null ? response.getBody() : Collections.emptyList();
     }
 
+    //Suppression d'un patient
     public void deletePatient(Integer id) {
         String url = gatewayBaseUrl + "/patients/" + id;
 
@@ -103,10 +109,14 @@ public class PatientFrontService {
         restTemplate.exchange(url, HttpMethod.DELETE, entity, Void.class);
     }
 
+    //Header pour requêtes https
     private HttpHeaders createHeaders() {
-        return new HttpHeaders();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        return headers;
     }
 
+    //Recupération des notes via l'ID patient
     public List<NotesDTO> getNotesByPatientId(Integer patientId) {
         String url = gatewayBaseUrl + "/notes/patient/" + patientId;
 
@@ -120,6 +130,7 @@ public class PatientFrontService {
         return response.getBody() != null ? response.getBody() : Collections.emptyList();
     }
 
+    //Création d'une note
     public void createNote(NotesDTO noteDTO) {
         String url = gatewayBaseUrl + "/notes";
 
@@ -131,6 +142,7 @@ public class PatientFrontService {
         restTemplate.exchange(url, HttpMethod.POST, entity, NotesDTO.class);
     }
 
+    //Récupération de l'assessment du patient (risque diabete)
     public AssessmentDTO getAssessmentByPatientId(Integer id) {
         return restTemplate.getForObject(
                 gatewayBaseUrl + "/assess/" + id,
@@ -138,6 +150,7 @@ public class PatientFrontService {
         );
     }
 
+    //Récupérer les notes via ID patient
     public NotesDTO getNoteById(String id) {
         return restTemplate.getForObject(
                 gatewayBaseUrl + "/notes/" + id,
@@ -145,6 +158,7 @@ public class PatientFrontService {
         );
     }
 
+    //Modification d'une note patient
     public NotesDTO updateNote(String id, NotesDTO noteDTO) {
         restTemplate.put(
                 gatewayBaseUrl + "/notes/" + id,

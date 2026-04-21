@@ -18,6 +18,7 @@ public class NotesClient {
         this.restTemplate = restTemplate;
     }
 
+    // URL de base injectée depuis application.yml ou les variables d’environnement Docker
     @Value("${notes-service.base-url}")
     private String notesServiceBaseUrl;
 

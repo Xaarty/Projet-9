@@ -21,6 +21,7 @@ public class PatientWebController {
         this.patientFrontService = patientFrontService;
     }
 
+    // Redirection vers la page principale
     @GetMapping("/")
     public String home() {
         return "redirect:/patients";
@@ -32,6 +33,7 @@ public class PatientWebController {
             @RequestParam(required = false) String firstName,
             Model model) {
 
+        // recherche ciblée par nom ou nom / prénom
         if (lastName != null) {
             if (lastName.isBlank()) {
                 model.addAttribute("error", "Last name is required for search");
@@ -49,6 +51,7 @@ public class PatientWebController {
         return "patients";
     }
 
+    // Formulaire d’ajout de patients
     @GetMapping("/patients/add")
     public String showAddForm(Model model) {
         model.addAttribute("patient", new PatientDTO());
@@ -57,6 +60,7 @@ public class PatientWebController {
         return "patient-form";
     }
 
+    // Création du patient
     @PostMapping("/patients/add")
     public String addPatient(@Valid @ModelAttribute("patient") PatientDTO patientDTO,
                              BindingResult bindingResult,
@@ -71,6 +75,7 @@ public class PatientWebController {
         return "redirect:/patients";
     }
 
+    // Charge le patient existant et affiche le formulaire de modification
     @GetMapping("/patients/edit/{id}")
     public String showEditForm(@PathVariable Integer id, Model model) {
         PatientDTO patient = patientFrontService.getPatientById(id);
@@ -80,6 +85,7 @@ public class PatientWebController {
         return "patient-form";
     }
 
+    // Mise à jour du patient
     @PostMapping("/patients/edit/{id}")
     public String updatePatient(@PathVariable Integer id,
                                 @Valid @ModelAttribute("patient") PatientDTO patientDTO,
@@ -95,12 +101,14 @@ public class PatientWebController {
         return "redirect:/patients";
     }
 
+    // Suppression du patient
     @PostMapping("/patients/delete/{id}")
     public String deletePatient(@PathVariable Integer id) {
         patientFrontService.deletePatient(id);
         return "redirect:/patients";
     }
 
+    // Page d'informations du patient, des notes et son évaluation de risque de diabete
     @GetMapping("/patients/{id}/history")
     public String showPatientHistory(@PathVariable Integer id, Model model) {
         PatientDTO patient = patientFrontService.getPatientById(id);
@@ -114,6 +122,7 @@ public class PatientWebController {
         return "patient-history";
     }
 
+    // Création d’une note
     @PostMapping("/patients/{id}/history")
     public String addPatientNote(@PathVariable Integer id,
                                  @RequestParam String note) {
@@ -126,6 +135,7 @@ public class PatientWebController {
         return "redirect:/patients/" + id + "/history";
     }
 
+    // Charge une note et le formulaire d’édition
     @GetMapping("/patients/{patientId}/history/edit-note/{noteId}")
     public String showEditNoteForm(@PathVariable Integer patientId,
                                    @PathVariable String noteId,
@@ -138,6 +148,7 @@ public class PatientWebController {
         return "note-form";
     }
 
+    // Modification de note de patient
     @PostMapping("/patients/{patientId}/history/edit-note/{noteId}")
     public String updatePatientNote(@PathVariable Integer patientId,
                                     @PathVariable String noteId,
