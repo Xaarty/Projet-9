@@ -4,6 +4,9 @@ import com.medilabo.patient.dto.PatientDTO;
 import com.medilabo.patient.exception.NotFoundException;
 import com.medilabo.patient.model.Patient;
 import com.medilabo.patient.repository.PatientRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,11 +21,11 @@ public class PatientService {
     }
 
     //Récupération de tout les patients
-    public List<PatientDTO> getAllPatients() {
-        return patientRepository.findAll()
-                .stream()
-                .map(this::convertToDTO)
-                .toList();
+    public Page<PatientDTO> getAllPatients(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+
+        return patientRepository.findAll(pageable)
+                .map(this::convertToDTO);
     }
 
     //Récupération d'un patient par ID

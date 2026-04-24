@@ -4,6 +4,7 @@ import com.medilabo.patient.dto.PatientDTO;
 import com.medilabo.patient.model.Patient;
 import com.medilabo.patient.service.PatientService;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,9 +27,13 @@ public class PatientController {
     }
 
     //Récupération d'un patient par ID
-    @GetMapping("/{id}")
-    public ResponseEntity<PatientDTO> getPatientById(@PathVariable Integer id) {
-        return ResponseEntity.ok(patientService.getPatientById(id));
+    //Ajout de pagination. Limite le coût à long terme.
+    @GetMapping
+    public ResponseEntity<Page<PatientDTO>> getAllPatients(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "20") int size) {
+
+        return ResponseEntity.ok(patientService.getAllPatients(page, size));
     }
 
     //Recherche de patient par nom voir prénom si renseigné

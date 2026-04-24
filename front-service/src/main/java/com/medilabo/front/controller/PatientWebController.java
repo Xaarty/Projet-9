@@ -31,19 +31,28 @@ public class PatientWebController {
     public String getPatients(
             @RequestParam(required = false) String lastName,
             @RequestParam(required = false) String firstName,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "20") int size,
             Model model) {
 
-        // recherche ciblée par nom ou nom / prénom
+        PatientPageDTO patientPage;
+
         if (lastName != null) {
             if (lastName.isBlank()) {
                 model.addAttribute("error", "Last name is required for search");
-                model.addAttribute("patients", patientFrontService.getAllPatients());
+                patientPage = patientFrontService.getAllPatients(page, size);
             } else {
-                model.addAttribute("patients", patientFrontService.searchPatients(lastName, firstName));
+                patientPage = patientFrontService.searchPatients(lastName, firstName, page, size);
             }
         } else {
-            model.addAttribute("patients", patientFrontService.getAllPatients());
+            patientPage = patientFrontService.getAllPatients(page, size);
         }
+
+        model.addAttribute("patients", patientPage.getContent());
+        model.addAttribute("currentPage", patientPage.getNumber());
+        model.addAttribute("pageSize", patientPage.getSize());
+        model.addAttribute("hasPrevious", patientPage.isHasPrevious());
+        model.addAttribute("hasNext", patientPage.isHasNext());
 
         model.addAttribute("lastName", lastName);
         model.addAttribute("firstName", firstName);

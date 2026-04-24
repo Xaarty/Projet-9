@@ -5,6 +5,7 @@ import com.medilabo.assessment.client.PatientClient;
 import com.medilabo.assessment.dto.AssessmentResponseDTO;
 import com.medilabo.assessment.dto.NoteDTO;
 import com.medilabo.assessment.dto.PatientDTO;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.text.Normalizer;
@@ -43,6 +44,7 @@ public class AssessmentService {
         this.notesClient = notesClient;
     }
 
+    @Cacheable("assessments")
     public AssessmentResponseDTO assessPatient(Integer patientId) {
         // Récupération des données patient et des notes via microservices
         PatientDTO patient = patientClient.getPatientById(patientId);

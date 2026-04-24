@@ -30,7 +30,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @WebMvcTest(PatientController.class)
 @Import(GlobalExceptionHandler.class)
-class PatientControllerTests {
+class PatientControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -53,9 +53,13 @@ class PatientControllerTests {
                 "0123456789"
         );
 
-        when(patientService.getAllPatients()).thenReturn(List.of(patient));
+        Page<PatientDTO> page = new PageImpl<>(List.of(patient));
 
-        mockMvc.perform(get("/patients"))
+        when(patientService.getAllPatients(0, 20)).thenReturn(page);
+
+        mockMvc.perform(get("/patients")
+                        .param("page", "0")
+                        .param("size", "20"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].id").value(1))
                 .andExpect(jsonPath("$[0].firstName").value("John"))

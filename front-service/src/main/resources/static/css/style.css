@@ -597,6 +597,19 @@ tbody tr:hover td {
     font-weight: 600;
 }
 
+.pagination-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.pagination-info {
+    font-weight: 600;
+    color: var(--text);
+}
+
 /* Responsive */
 
 @media (max-width: 900px) {
