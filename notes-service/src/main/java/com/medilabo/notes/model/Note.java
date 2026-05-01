@@ -1,6 +1,7 @@
 package com.medilabo.notes.model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Version;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
@@ -14,6 +15,9 @@ public class Note {
     private Integer patientId;
     private String note;
     private LocalDateTime createdAt;
+
+    @Version
+    private Long version;
 
     public Note() {
     }

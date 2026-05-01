@@ -17,6 +17,8 @@ public class NoteDTO {
 
     private LocalDateTime createdAt;
 
+    private Long version;
+
     public NoteDTO() {
     }
 
