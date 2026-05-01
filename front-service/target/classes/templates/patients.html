@@ -39,6 +39,8 @@
             <form class="search-form" th:action="@{/patients}" method="get">
                 <input class="input" type="text" name="lastName" placeholder="Last name" th:value="${lastName}" required>
                 <input class="input" type="text" name="firstName" placeholder="First name" th:value="${firstName}">
+                <input type="hidden" name="page" value="0">
+                <input type="hidden" name="size" th:value="${pageSize != null ? pageSize : 20}">
 
                 <button type="submit" class="button">Search</button>
 
@@ -90,8 +92,30 @@
                         </div>
                     </td>
                 </tr>
+
+                <tr th:if="${#lists.isEmpty(patients)}">
+                    <td colspan="8" class="empty-message">No patients found.</td>
+                </tr>
                 </tbody>
             </table>
+        </div>
+
+        <div class="pagination-bar" th:if="${currentPage != null}">
+            <a class="button button-secondary"
+               th:if="${hasPrevious}"
+               th:href="@{/patients(page=${currentPage - 1}, size=${pageSize}, lastName=${lastName}, firstName=${firstName})}">
+                Previous
+            </a>
+
+            <span class="pagination-info">
+                Page <span th:text="${currentPage + 1}"></span>
+            </span>
+
+            <a class="button button-secondary"
+               th:if="${hasNext}"
+               th:href="@{/patients(page=${currentPage + 1}, size=${pageSize}, lastName=${lastName}, firstName=${firstName})}">
+                Next
+            </a>
         </div>
     </div>
 </div>

@@ -1,8 +1,8 @@
-C:\Users\Public\Documents\Projet Open\untitled\notes-service\src\main\java\com\medilabo\notes\NotesServiceApplication.java
-C:\Users\Public\Documents\Projet Open\untitled\notes-service\src\main\java\com\medilabo\notes\exception\GlobalExceptionHandler.java
-C:\Users\Public\Documents\Projet Open\untitled\notes-service\src\main\java\com\medilabo\notes\service\NoteService.java
-C:\Users\Public\Documents\Projet Open\untitled\notes-service\src\main\java\com\medilabo\notes\controller\NoteController.java
-C:\Users\Public\Documents\Projet Open\untitled\notes-service\src\main\java\com\medilabo\notes\repository\NoteRepository.java
-C:\Users\Public\Documents\Projet Open\untitled\notes-service\src\main\java\com\medilabo\notes\exception\NotFoundException.java
-C:\Users\Public\Documents\Projet Open\untitled\notes-service\src\main\java\com\medilabo\notes\dto\NoteDTO.java
-C:\Users\Public\Documents\Projet Open\untitled\notes-service\src\main\java\com\medilabo\notes\model\Note.java
+C:\Users\caill\Desktop\Projetopen Java\Projet9\Projet-9\notes-service\src\main\java\com\medilabo\notes\controller\NoteController.java
+C:\Users\caill\Desktop\Projetopen Java\Projet9\Projet-9\notes-service\src\main\java\com\medilabo\notes\dto\NoteDTO.java
+C:\Users\caill\Desktop\Projetopen Java\Projet9\Projet-9\notes-service\src\main\java\com\medilabo\notes\exception\NotFoundException.java
+C:\Users\caill\Desktop\Projetopen Java\Projet9\Projet-9\notes-service\src\main\java\com\medilabo\notes\NotesServiceApplication.java
+C:\Users\caill\Desktop\Projetopen Java\Projet9\Projet-9\notes-service\src\main\java\com\medilabo\notes\exception\GlobalExceptionHandler.java
+C:\Users\caill\Desktop\Projetopen Java\Projet9\Projet-9\notes-service\src\main\java\com\medilabo\notes\repository\NoteRepository.java
+C:\Users\caill\Desktop\Projetopen Java\Projet9\Projet-9\notes-service\src\main\java\com\medilabo\notes\service\NoteService.java
+C:\Users\caill\Desktop\Projetopen Java\Projet9\Projet-9\notes-service\src\main\java\com\medilabo\notes\model\Note.java

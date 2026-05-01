@@ -1,6 +1,7 @@
 package com.medilabo.front.service;
 
 import com.medilabo.front.dto.PatientDTO;
+import com.medilabo.front.dto.PatientPageDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -42,39 +43,36 @@ class PatientFrontServiceTest {
 
     @Test
     void shouldReturnAllPatients() {
-        ResponseEntity<List<PatientDTO>> response =
-                new ResponseEntity<>(List.of(patientDTO), HttpStatus.OK);
+        PatientPageDTO patientPage = new PatientPageDTO();
+        patientPage.setContent(List.of(patientDTO));
+        patientPage.setNumber(0);
+        patientPage.setSize(20);
+        patientPage.setTotalElements(1);
+        patientPage.setTotalPages(1);
 
-        when(restTemplate.exchange(
-                eq("http://localhost:8080/patients"),
-                eq(HttpMethod.GET),
-                any(HttpEntity.class),
-                any(ParameterizedTypeReference.class)
-        )).thenReturn(response);
+        when(restTemplate.getForObject(
+                "http://localhost:8080/patients?page=0&size=20",
+                PatientPageDTO.class
+        )).thenReturn(patientPage);
 
-        List<PatientDTO> result = patientFrontService.getAllPatients();
+        PatientPageDTO result = patientFrontService.getAllPatients(0, 20);
 
         assertNotNull(result);
-        assertEquals(1, result.size());
-        assertEquals("John", result.get(0).getFirstName());
+        assertEquals(1, result.getContent().size());
+        assertEquals("John", result.getContent().get(0).getFirstName());
     }
 
     @Test
-    void shouldReturnEmptyListWhenGetAllPatientsResponseBodyIsNull() {
-        ResponseEntity<List<PatientDTO>> response =
-                new ResponseEntity<>(null, HttpStatus.OK);
+    void shouldReturnEmptyPageWhenGetAllPatientsResponseBodyIsNull() {
+        when(restTemplate.getForObject(
+                "http://localhost:8080/patients?page=0&size=20",
+                PatientPageDTO.class
+        )).thenReturn(null);
 
-        when(restTemplate.exchange(
-                eq("http://localhost:8080/patients"),
-                eq(HttpMethod.GET),
-                any(HttpEntity.class),
-                any(ParameterizedTypeReference.class)
-        )).thenReturn(response);
-
-        List<PatientDTO> result = patientFrontService.getAllPatients();
+        PatientPageDTO result = patientFrontService.getAllPatients(0, 20);
 
         assertNotNull(result);
-        assertTrue(result.isEmpty());
+        assertTrue(result.getContent() == null || result.getContent().isEmpty());
     }
 
     @Test
@@ -142,58 +140,57 @@ class PatientFrontServiceTest {
 
     @Test
     void shouldSearchPatientsByLastNameOnly() {
-        ResponseEntity<List<PatientDTO>> response =
-                new ResponseEntity<>(List.of(patientDTO), HttpStatus.OK);
+        PatientPageDTO patientPage = new PatientPageDTO();
+        patientPage.setContent(List.of(patientDTO));
+        patientPage.setNumber(0);
+        patientPage.setSize(20);
+        patientPage.setTotalElements(1);
+        patientPage.setTotalPages(1);
 
-        when(restTemplate.exchange(
-                eq("http://localhost:8080/patients/search?lastName=Doe"),
-                eq(HttpMethod.GET),
-                any(HttpEntity.class),
-                any(ParameterizedTypeReference.class)
-        )).thenReturn(response);
+        when(restTemplate.getForObject(
+                "http://localhost:8080/patients/search?lastName=Doe&page=0&size=20",
+                PatientPageDTO.class
+        )).thenReturn(patientPage);
 
-        List<PatientDTO> result = patientFrontService.searchPatients("Doe", null);
+        PatientPageDTO result = patientFrontService.searchPatients("Doe", null, 0, 20);
 
         assertNotNull(result);
-        assertEquals(1, result.size());
-        assertEquals("Doe", result.get(0).getLastName());
+        assertEquals(1, result.getContent().size());
+        assertEquals("Doe", result.getContent().get(0).getLastName());
     }
 
     @Test
     void shouldSearchPatientsByLastNameAndFirstName() {
-        ResponseEntity<List<PatientDTO>> response =
-                new ResponseEntity<>(List.of(patientDTO), HttpStatus.OK);
+        PatientPageDTO patientPage = new PatientPageDTO();
+        patientPage.setContent(List.of(patientDTO));
+        patientPage.setNumber(0);
+        patientPage.setSize(20);
+        patientPage.setTotalElements(1);
+        patientPage.setTotalPages(1);
 
-        when(restTemplate.exchange(
-                eq("http://localhost:8080/patients/search?lastName=Doe&firstName=John"),
-                eq(HttpMethod.GET),
-                any(HttpEntity.class),
-                any(ParameterizedTypeReference.class)
-        )).thenReturn(response);
+        when(restTemplate.getForObject(
+                "http://localhost:8080/patients/search?lastName=Doe&page=0&size=20&firstName=John",
+                PatientPageDTO.class
+        )).thenReturn(patientPage);
 
-        List<PatientDTO> result = patientFrontService.searchPatients("Doe", "John");
+        PatientPageDTO result = patientFrontService.searchPatients("Doe", "John", 0, 20);
 
         assertNotNull(result);
-        assertEquals(1, result.size());
-        assertEquals("John", result.get(0).getFirstName());
+        assertEquals(1, result.getContent().size());
+        assertEquals("John", result.getContent().get(0).getFirstName());
     }
 
     @Test
-    void shouldReturnEmptyListWhenSearchPatientsResponseBodyIsNull() {
-        ResponseEntity<List<PatientDTO>> response =
-                new ResponseEntity<>(null, HttpStatus.OK);
+    void shouldReturnEmptyPageWhenSearchPatientsResponseBodyIsNull() {
+        when(restTemplate.getForObject(
+                "http://localhost:8080/patients/search?lastName=Doe&page=0&size=20",
+                PatientPageDTO.class
+        )).thenReturn(null);
 
-        when(restTemplate.exchange(
-                eq("http://localhost:8080/patients/search?lastName=Doe"),
-                eq(HttpMethod.GET),
-                any(HttpEntity.class),
-                any(ParameterizedTypeReference.class)
-        )).thenReturn(response);
-
-        List<PatientDTO> result = patientFrontService.searchPatients("Doe", null);
+        PatientPageDTO result = patientFrontService.searchPatients("Doe", null, 0, 20);
 
         assertNotNull(result);
-        assertTrue(result.isEmpty());
+        assertTrue(result.getContent() == null || result.getContent().isEmpty());
     }
 
     @Test

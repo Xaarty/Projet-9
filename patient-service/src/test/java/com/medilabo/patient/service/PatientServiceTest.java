@@ -10,6 +10,10 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -18,8 +22,9 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+
 @ExtendWith(MockitoExtension.class)
-class PatientServiceTests {
+class PatientServiceTest {
 
     @Mock
     private PatientRepository patientRepository;
@@ -55,16 +60,19 @@ class PatientServiceTests {
 
     @Test
     void shouldReturnAllPatients() {
-        when(patientRepository.findAll()).thenReturn(List.of(patient));
+        Pageable pageable = PageRequest.of(0, 20);
+        Page<Patient> patientPage = new PageImpl<>(List.of(patient));
 
-        List<PatientDTO> result = patientService.getAllPatients();
+        when(patientRepository.findAll(pageable)).thenReturn(patientPage);
+
+        Page<PatientDTO> result = patientService.getAllPatients(0, 20);
 
         assertNotNull(result);
-        assertEquals(1, result.size());
-        assertEquals("John", result.get(0).getFirstName());
-        assertEquals("Doe", result.get(0).getLastName());
+        assertEquals(1, result.getContent().size());
+        assertEquals("John", result.getContent().get(0).getFirstName());
+        assertEquals("Doe", result.getContent().get(0).getLastName());
 
-        verify(patientRepository).findAll();
+        verify(patientRepository).findAll(pageable);
     }
 
     @Test
@@ -224,4 +232,5 @@ class PatientServiceTests {
 
         verify(patientRepository).findByLastNameAndFirstName("Doe", "John");
     }
+
 }

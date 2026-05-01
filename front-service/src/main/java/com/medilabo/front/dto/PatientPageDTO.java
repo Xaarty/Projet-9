@@ -3,9 +3,61 @@ package com.medilabo.front.dto;
 import java.util.List;
 
 public class PatientPageDTO {
+
     private List<PatientDTO> content;
     private int number;
     private int size;
-    private boolean hasPrevious;
-    private boolean hasNext;
+    private long totalElements;
+    private int totalPages;
+
+    public PatientPageDTO() {
+    }
+
+    public List<PatientDTO> getContent() {
+        return content;
+    }
+
+    public void setContent(List<PatientDTO> content) {
+        this.content = content;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    public long getTotalElements() {
+        return totalElements;
+    }
+
+    public void setTotalElements(long totalElements) {
+        this.totalElements = totalElements;
+    }
+
+    public int getTotalPages() {
+        return totalPages;
+    }
+
+    public void setTotalPages(int totalPages) {
+        this.totalPages = totalPages;
+    }
+
+    public boolean isHasPrevious() {
+        return number > 0;
+    }
+
+    public boolean isHasNext() {
+        return number + 1 < totalPages;
+    }
 }

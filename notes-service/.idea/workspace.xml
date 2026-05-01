@@ -5,34 +5,54 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bb60920a-260a-41ff-8420-add5e30e2fd9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../front-service/src/test/java/com/medilabo/front/controller/PatientWebControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../front-service/src/test/java/com/medilabo/front/service/PatientFrontServiceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/medilabo/notes/NotesServiceApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/medilabo/notes/controller/NoteController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/medilabo/notes/dto/NoteDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/medilabo/notes/exception/GlobalExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/medilabo/notes/exception/NotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/medilabo/notes/model/Note.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/medilabo/notes/repository/NoteRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/medilabo/notes/service/NoteService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../patient-service/src/test/java/com/medilabo/patient/service/PatientServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../front-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../assessment-service/target/assessment-service-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../assessment-service/target/assessment-service-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../assessment-service/target/assessment-service-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/../assessment-service/target/assessment-service-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../assessment-service/target/classes/com/medilabo/assessment/AssessmentApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/../assessment-service/target/classes/com/medilabo/assessment/AssessmentApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../assessment-service/target/classes/com/medilabo/assessment/client/NotesClient$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../assessment-service/target/classes/com/medilabo/assessment/client/NotesClient$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../assessment-service/target/classes/com/medilabo/assessment/client/NotesClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/../assessment-service/target/classes/com/medilabo/assessment/client/NotesClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../assessment-service/target/classes/com/medilabo/assessment/client/PatientClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/../assessment-service/target/classes/com/medilabo/assessment/client/PatientClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../assessment-service/target/classes/com/medilabo/assessment/controller/AssessmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../assessment-service/target/classes/com/medilabo/assessment/controller/AssessmentController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../assessment-service/target/classes/com/medilabo/assessment/service/AssessmentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../assessment-service/target/classes/com/medilabo/assessment/service/AssessmentService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../assessment-service/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../assessment-service/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../assessment-service/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../assessment-service/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../assessment-service/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../assessment-service/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../assessment-service/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../assessment-service/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../front-service/src/main/java/com/medilabo/front/controller/PatientWebController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../front-service/src/main/java/com/medilabo/front/controller/PatientWebController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-service/src/main/java/com/medilabo/front/dto/PatientPageDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../front-service/src/main/java/com/medilabo/front/dto/PatientPageDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-service/src/main/java/com/medilabo/front/service/PatientFrontService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../front-service/src/main/java/com/medilabo/front/service/PatientFrontService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-service/src/test/java/com/medilabo/front/controller/PatientWebControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../front-service/src/test/java/com/medilabo/front/controller/PatientWebControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-service/src/test/java/com/medilabo/front/service/PatientFrontServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../front-service/src/test/java/com/medilabo/front/service/PatientFrontServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-service/target/classes/com/medilabo/front/config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/../front-service/target/classes/com/medilabo/front/config/SecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-service/target/classes/com/medilabo/front/controller/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../front-service/target/classes/com/medilabo/front/controller/AuthController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../front-service/target/classes/com/medilabo/front/controller/PatientWebController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../front-service/target/classes/com/medilabo/front/controller/PatientWebController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../patient-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../patient-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../patient-service/src/main/java/com/medilabo/patient/controller/PatientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../patient-service/src/main/java/com/medilabo/patient/controller/PatientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../patient-service/src/main/java/com/medilabo/patient/service/PatientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../patient-service/src/main/java/com/medilabo/patient/service/PatientService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../patient-service/target/classes/com/medilabo/patient/controller/PatientController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../patient-service/target/classes/com/medilabo/patient/controller/PatientController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../patient-service/target/classes/com/medilabo/patient/service/PatientService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../patient-service/target/classes/com/medilabo/patient/service/PatientService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../patient-service/target/maven-archiver/pom.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../patient-service/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../patient-service/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../patient-service/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../patient-service/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../patient-service/target/patient-service-0.0.1-SNAPSHOT.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../patient-service/target/patient-service-0.0.1-SNAPSHOT.jar.original" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-service/target/classes/com/medilabo/front/service/AssessmentClientService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../front-service/target/classes/com/medilabo/front/service/AssessmentClientService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-service/target/classes/com/medilabo/front/service/PatientFrontService$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../front-service/target/classes/com/medilabo/front/service/PatientFrontService$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-service/target/classes/com/medilabo/front/service/PatientFrontService$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-service/target/classes/com/medilabo/front/service/PatientFrontService$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-service/target/classes/com/medilabo/front/service/PatientFrontService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../front-service/target/classes/com/medilabo/front/service/PatientFrontService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-service/target/classes/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/../front-service/target/classes/static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-service/target/classes/templates/patients.html" beforeDir="false" afterPath="$PROJECT_DIR$/../front-service/target/classes/templates/patients.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-service/target/front-service-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../front-service/target/front-service-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-service/target/front-service-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/../front-service/target/front-service-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-service/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../front-service/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-service/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../front-service/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-service/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../front-service/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-service/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../front-service/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-service/target/test-classes/com/medilabo/front/controller/PatientWebControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/../front-service/target/test-classes/com/medilabo/front/controller/PatientWebControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-service/target/test-classes/com/medilabo/front/service/PatientFrontServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/../front-service/target/test-classes/com/medilabo/front/service/PatientFrontServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gateway-service/target/gateway-service-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../gateway-service/target/gateway-service-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gateway-service/target/gateway-service-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/../gateway-service/target/gateway-service-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gateway-service/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../gateway-service/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gateway-service/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../gateway-service/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/medilabo/notes/controller/NoteController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/medilabo/notes/controller/NoteController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/medilabo/notes/exception/GlobalExceptionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/medilabo/notes/exception/GlobalExceptionHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/medilabo/notes/exception/NotFoundException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/medilabo/notes/exception/NotFoundException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/medilabo/notes/service/NoteService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/medilabo/notes/service/NoteService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/notes-service-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/notes-service-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/notes-service-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/notes-service-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,21 +62,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Xaarty"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Xaarty&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Xaarty/Projet-9.git",
-    "accountId": "7a83320e-f7f7-4c94-8a2f-d8a6bb5d3878"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Xaarty/Projet-9.git&quot;,
+    &quot;accountId&quot;: &quot;7a83320e-f7f7-4c94-8a2f-d8a6bb5d3878&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="3C8Kl9RpqJaNVl0fbdJEGpTZGJV" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -66,9 +86,9 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "tests",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/caill/Desktop/Projetopen Java/Projet9"
+    "last_opened_file_path": "C:/Users/caill/Desktop/Projetopen Java/Projet9/Projet-9/patient-service"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />

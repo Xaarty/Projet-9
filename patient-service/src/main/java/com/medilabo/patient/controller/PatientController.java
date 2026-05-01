@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 @RestController
@@ -20,20 +21,15 @@ public class PatientController {
         this.patientService = patientService;
     }
 
-    //Récupération de tout les patients
-    @GetMapping
-    public List<PatientDTO> getAllPatients() {
-        return patientService.getAllPatients();
-    }
 
     //Récupération d'un patient par ID
     //Ajout de pagination. Limite le coût à long terme.
     @GetMapping
-    public ResponseEntity<Page<PatientDTO>> getAllPatients(
+    public Page<PatientDTO> getAllPatients(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "20") int size) {
 
-        return ResponseEntity.ok(patientService.getAllPatients(page, size));
+        return patientService.getAllPatients(page, size);
     }
 
     //Recherche de patient par nom voir prénom si renseigné

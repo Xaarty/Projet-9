@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h1 th:text="${errorTitle}">Error</h1>
+        <p th:text="${errorMessage}">An unexpected error occurred.</p>
+        <a class="button" th:href="@{/patients}">Back to patients</a>
+    </div>
+</div>
+</body>
+</html>

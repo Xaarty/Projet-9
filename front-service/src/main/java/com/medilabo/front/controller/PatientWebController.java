@@ -3,6 +3,7 @@ package com.medilabo.front.controller;
 import com.medilabo.front.dto.AssessmentDTO;
 import com.medilabo.front.dto.NotesDTO;
 import com.medilabo.front.dto.PatientDTO;
+import com.medilabo.front.dto.PatientPageDTO;
 import com.medilabo.front.service.PatientFrontService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;

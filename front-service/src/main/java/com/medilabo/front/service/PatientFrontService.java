@@ -3,6 +3,7 @@ package com.medilabo.front.service;
 import com.medilabo.front.dto.AssessmentDTO;
 import com.medilabo.front.dto.NotesDTO;
 import com.medilabo.front.dto.PatientDTO;
+import com.medilabo.front.dto.PatientPageDTO;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
@@ -25,20 +26,16 @@ public class PatientFrontService {
         this.gatewayBaseUrl = gatewayBaseUrl;
     }
 
-    // Retourne la liste complète des patients
-    public List<PatientDTO> getAllPatients() {
-        String url = gatewayBaseUrl + "/patients";
+    // Retourne la liste des patients avec pagination
+    public PatientPageDTO getAllPatients(int page, int size) {
+        String url = gatewayBaseUrl + "/patients?page=" + page + "&size=" + size;
 
-        HttpEntity<Void> entity = new HttpEntity<>(createHeaders());
-
-        ResponseEntity<List<PatientDTO>> response = restTemplate.exchange(
+        PatientPageDTO response = restTemplate.getForObject(
                 url,
-                HttpMethod.GET,
-                entity,
-                new ParameterizedTypeReference<List<PatientDTO>>() {}
+                PatientPageDTO.class
         );
 
-        return response.getBody() != null ? response.getBody() : Collections.emptyList();
+        return response != null ? response : new PatientPageDTO();
     }
 
     public PatientDTO getPatientById(Integer id) {
@@ -80,24 +77,24 @@ public class PatientFrontService {
         restTemplate.exchange(url, HttpMethod.PUT, entity, PatientDTO.class);
     }
 
-    //Cherche un patient via nom de famille et prénom si renseigné
-    public List<PatientDTO> searchPatients(String lastName, String firstName) {
-        StringBuilder url = new StringBuilder(gatewayBaseUrl + "/patients/search?lastName=" + lastName);
+    // Cherche un patient via nom de famille et prénom si renseigné, avec pagination
+    public PatientPageDTO searchPatients(String lastName, String firstName, int page, int size) {
+        StringBuilder url = new StringBuilder(
+                gatewayBaseUrl + "/patients/search?lastName=" + lastName
+                        + "&page=" + page
+                        + "&size=" + size
+        );
 
         if (firstName != null && !firstName.isBlank()) {
             url.append("&firstName=").append(firstName);
         }
 
-        HttpEntity<Void> entity = new HttpEntity<>(createHeaders());
-
-        ResponseEntity<List<PatientDTO>> response = restTemplate.exchange(
+        PatientPageDTO response = restTemplate.getForObject(
                 url.toString(),
-                HttpMethod.GET,
-                entity,
-                new ParameterizedTypeReference<List<PatientDTO>>() {}
+                PatientPageDTO.class
         );
 
-        return response.getBody() != null ? response.getBody() : Collections.emptyList();
+        return response != null ? response : new PatientPageDTO();
     }
 
     //Suppression d'un patient

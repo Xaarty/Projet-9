@@ -1,6 +1,7 @@
 package com.medilabo.front.controller;
 
 import com.medilabo.front.dto.PatientDTO;
+import com.medilabo.front.dto.PatientPageDTO;
 import com.medilabo.front.service.PatientFrontService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,16 +45,27 @@ class PatientWebControllerTest {
                 "M", "1 Main Street", "0123456789"
         );
 
-        when(patientFrontService.getAllPatients()).thenReturn(List.of(patient));
+        PatientPageDTO patientPage = new PatientPageDTO();
+        patientPage.setContent(List.of(patient));
+        patientPage.setNumber(0);
+        patientPage.setSize(20);
+        patientPage.setTotalElements(1);
+        patientPage.setTotalPages(1);
+
+        when(patientFrontService.getAllPatients(0, 20)).thenReturn(patientPage);
 
         mockMvc.perform(get("/patients"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("patients"))
                 .andExpect(model().attributeExists("patients"))
-                .andExpect(model().attribute("patients", List.of(patient)));
+                .andExpect(model().attribute("patients", List.of(patient)))
+                .andExpect(model().attribute("currentPage", 0))
+                .andExpect(model().attribute("pageSize", 20))
+                .andExpect(model().attribute("hasPrevious", false))
+                .andExpect(model().attribute("hasNext", false));
 
-        verify(patientFrontService).getAllPatients();
-        verify(patientFrontService, never()).searchPatients(any(), any());
+        verify(patientFrontService).getAllPatients(0, 20);
+        verify(patientFrontService, never()).searchPatients(any(), any(), anyInt(), anyInt());
     }
 
     @Test
@@ -63,7 +75,14 @@ class PatientWebControllerTest {
                 "M", "1 Main Street", "0123456789"
         );
 
-        when(patientFrontService.searchPatients("Doe", "John")).thenReturn(List.of(patient));
+        PatientPageDTO patientPage = new PatientPageDTO();
+        patientPage.setContent(List.of(patient));
+        patientPage.setNumber(0);
+        patientPage.setSize(20);
+        patientPage.setTotalElements(1);
+        patientPage.setTotalPages(1);
+
+        when(patientFrontService.searchPatients("Doe", "John", 0, 20)).thenReturn(patientPage);
 
         mockMvc.perform(get("/patients")
                         .param("lastName", "Doe")
@@ -71,16 +90,28 @@ class PatientWebControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(view().name("patients"))
                 .andExpect(model().attributeExists("patients"))
+                .andExpect(model().attribute("patients", List.of(patient)))
                 .andExpect(model().attribute("lastName", "Doe"))
-                .andExpect(model().attribute("firstName", "John"));
+                .andExpect(model().attribute("firstName", "John"))
+                .andExpect(model().attribute("currentPage", 0))
+                .andExpect(model().attribute("pageSize", 20))
+                .andExpect(model().attribute("hasPrevious", false))
+                .andExpect(model().attribute("hasNext", false));
 
-        verify(patientFrontService).searchPatients("Doe", "John");
-        verify(patientFrontService, never()).getAllPatients();
+        verify(patientFrontService).searchPatients("Doe", "John", 0, 20);
+        verify(patientFrontService, never()).getAllPatients(anyInt(), anyInt());
     }
 
     @Test
     void shouldDisplayErrorAndAllPatientsWhenLastNameIsBlank() throws Exception {
-        when(patientFrontService.getAllPatients()).thenReturn(List.of());
+        PatientPageDTO patientPage = new PatientPageDTO();
+        patientPage.setContent(List.of());
+        patientPage.setNumber(0);
+        patientPage.setSize(20);
+        patientPage.setTotalElements(0);
+        patientPage.setTotalPages(0);
+
+        when(patientFrontService.getAllPatients(0, 20)).thenReturn(patientPage);
 
         mockMvc.perform(get("/patients")
                         .param("lastName", ""))
@@ -88,10 +119,13 @@ class PatientWebControllerTest {
                 .andExpect(view().name("patients"))
                 .andExpect(model().attributeExists("error"))
                 .andExpect(model().attribute("error", "Last name is required for search"))
-                .andExpect(model().attributeExists("patients"));
+                .andExpect(model().attributeExists("patients"))
+                .andExpect(model().attribute("patients", List.of()))
+                .andExpect(model().attribute("currentPage", 0))
+                .andExpect(model().attribute("pageSize", 20));
 
-        verify(patientFrontService).getAllPatients();
-        verify(patientFrontService, never()).searchPatients(any(), any());
+        verify(patientFrontService).getAllPatients(0, 20);
+        verify(patientFrontService, never()).searchPatients(any(), any(), anyInt(), anyInt());
     }
 
     @Test
