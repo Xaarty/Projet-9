@@ -1,6 +1,7 @@
 name: Medilabo CI
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -14,26 +15,35 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        service:
-          - patient-service
-          - notes-service
-          - assessment-service
-          - gateway-service
-          - front-service
-
     steps:
+      # 1. Récupération du code
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Java 17
+      # 2. Setup Java
+      - name: Setup Java
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 17
           cache: maven
 
-      - name: Build and test ${{ matrix.service }}
-        working-directory: ${{ matrix.service }}
+      # 3. Build & tests (tous les services)
+      - name: Build & run tests
         run: mvn clean verify
+
+      # 4. Packaging
+      - name: Package application
+        run: mvn clean package -DskipTests
+
+      # 5. Upload des artefacts (jar)
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: medilabo-jars
+          path: |
+            patient-service/target/*.jar
+            notes-service/target/*.jar
+            assessment-service/target/*.jar
+            gateway-service/target/*.jar
+            front-service/target/*.jar
