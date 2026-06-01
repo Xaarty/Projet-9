@@ -101,6 +101,7 @@ public class PatientWebController {
                                 @Valid @ModelAttribute("patient") PatientDTO patientDTO,
                                 BindingResult bindingResult,
                                 Model model) {
+
         if (bindingResult.hasErrors()) {
             model.addAttribute("formAction", "/patients/edit/" + id);
             model.addAttribute("formTitle", "Edit Patient");

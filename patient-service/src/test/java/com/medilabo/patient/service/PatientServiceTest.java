@@ -14,6 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.orm.ObjectOptimisticLockingFailureException;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -22,6 +23,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+import jakarta.persistence.Version;
 
 @ExtendWith(MockitoExtension.class)
 class PatientServiceTest {
@@ -233,4 +235,26 @@ class PatientServiceTest {
         verify(patientRepository).findByLastNameAndFirstName("Doe", "John");
     }
 
+    @Test
+    void shouldThrowConflictWhenPatientIsUpdatedConcurrently() {
+        Patient patient = new Patient();
+        patient.setId(1);
+        patient.setFirstName("John");
+        patient.setLastName("Doe");
+        patient.setVersion(1L);
+
+        PatientDTO dto = new PatientDTO();
+        dto.setId(1);
+        dto.setFirstName("Jane");
+        dto.setLastName("Doe");
+        dto.setVersion(1L);
+
+        when(patientRepository.findById(1)).thenReturn(Optional.of(patient));
+        when(patientRepository.save(any(Patient.class)))
+                .thenThrow(new ObjectOptimisticLockingFailureException(Patient.class, 1));
+
+        assertThrows(ObjectOptimisticLockingFailureException.class, () -> {
+            patientService.updatePatient(1, dto);
+        });
+    }
 }

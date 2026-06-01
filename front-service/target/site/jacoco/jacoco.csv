@@ -1,0 +1,14 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+front-service,com.medilabo.front.exception,GlobalExceptionHandler,49,3,0,0,12,1,4,1,4,1
+front-service,com.medilabo.front.controller,AuthController,5,0,0,0,2,0,2,0,2,0
+front-service,com.medilabo.front.controller,PatientWebController,83,178,0,8,20,41,4,12,4,8
+front-service,com.medilabo.front,FrontServiceApplication,5,3,0,0,2,1,1,1,1,1
+front-service,com.medilabo.front.dto,AssessmentDTO,52,0,0,0,23,0,15,0,15,0
+front-service,com.medilabo.front.dto,NotesDTO,46,0,0,0,20,0,10,0,10,0
+front-service,com.medilabo.front.dto,PatientDTO,4,79,0,0,2,33,1,17,1,17
+front-service,com.medilabo.front.dto,PatientPageDTO,10,46,2,2,2,17,4,11,2,11
+front-service,com.medilabo.front.service,AssessmentClientService,21,0,0,0,5,0,2,0,2,0
+front-service,com.medilabo.front.service,PatientFrontService.new ParameterizedTypeReference() {...},6,0,0,0,1,0,1,0,1,0
+front-service,com.medilabo.front.service,PatientFrontService,101,186,4,8,14,37,8,11,5,8
+front-service,com.medilabo.front.config,AppConfig,7,0,0,0,2,0,2,0,2,0
+front-service,com.medilabo.front.config,SecurityConfig,91,0,0,0,21,0,7,0,7,0

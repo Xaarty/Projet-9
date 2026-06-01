@@ -83,6 +83,10 @@
                             <a class="link" th:href="@{'/patients/' + ${patient.id} + '/history'}">History</a>
 
                             <form class="inline" th:action="@{'/patients/delete/' + ${patient.id}}" method="post">
+                                <input type="hidden"
+                                       th:if="${_csrf != null}"
+                                       th:name="${_csrf.parameterName}"
+                                       th:value="${_csrf.token}">
                                 <button type="submit"
                                         class="delete-btn"
                                         onclick="return confirm('Are you sure you want to delete this patient?')">

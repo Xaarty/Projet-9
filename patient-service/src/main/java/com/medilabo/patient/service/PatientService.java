@@ -93,9 +93,10 @@ public class PatientService {
                 .toList();
     }
 
-    // Convertit l’entité MongoDB pour la manipuler
+    // Convertit l’entité Patient en DTO
     private PatientDTO convertToDTO(Patient patient) {
-        return new PatientDTO(
+
+        PatientDTO dto = new PatientDTO(
                 patient.getId(),
                 patient.getFirstName(),
                 patient.getLastName(),
@@ -104,5 +105,9 @@ public class PatientService {
                 patient.getAddress(),
                 patient.getPhone()
         );
+
+        dto.setVersion(patient.getVersion());
+
+        return dto;
     }
 }

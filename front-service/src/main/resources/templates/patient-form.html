@@ -34,6 +34,12 @@
 
     <div class="card">
         <form th:action="@{${formAction}}" th:object="${patient}" method="post" class="patient-form">
+            <input type="hidden"
+                   th:if="${_csrf != null}"
+                   th:name="${_csrf.parameterName}"
+                   th:value="${_csrf.token}">
+            <input type="hidden" th:field="*{id}">
+            <input type="hidden" th:field="*{version}">
             <div class="form-grid">
 
                 <div class="form-group">

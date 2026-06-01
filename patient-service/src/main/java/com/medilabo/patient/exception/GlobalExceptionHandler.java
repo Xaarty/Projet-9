@@ -2,6 +2,7 @@ package com.medilabo.patient.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
@@ -59,5 +60,12 @@ public class GlobalExceptionHandler {
         error.put("errors", validationErrors);
 
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+    }
+
+    //Erreur de concurrence
+    @ExceptionHandler(ObjectOptimisticLockingFailureException.class)
+    public ResponseEntity<String> handleOptimisticLocking() {
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body("La ressource a été modifiée par un autre utilisateur. Veuillez recharger la page.");
     }
 }

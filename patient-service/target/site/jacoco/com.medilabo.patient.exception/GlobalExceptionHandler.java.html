@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GlobalExceptionHandler.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">patient-service</a> &gt; <a href="index.source.html" class="el_package">com.medilabo.patient.exception</a> &gt; <span class="el_source">GlobalExceptionHandler.java</span></div><h1>GlobalExceptionHandler.java</h1><pre class="source lang-java linenums">package com.medilabo.patient.exception;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.orm.ObjectOptimisticLockingFailureException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
+
+@RestControllerAdvice
+<span class="fc" id="L13">public class GlobalExceptionHandler {</span>
+
+    //Erreur 404 lorsqu'une ressource est introuvable (patient)
+    @ExceptionHandler(NotFoundException.class)
+    public ResponseEntity&lt;Map&lt;String, Object&gt;&gt; handleNotFound(NotFoundException ex) {
+
+<span class="fc" id="L19">        Map&lt;String, Object&gt; error = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L20">        error.put(&quot;message&quot;, ex.getMessage());</span>
+<span class="fc" id="L21">        error.put(&quot;status&quot;, HttpStatus.NOT_FOUND.value());</span>
+
+<span class="fc" id="L23">        return new ResponseEntity&lt;&gt;(error, HttpStatus.NOT_FOUND);</span>
+    }
+
+    //Erreur 400 lorsqu’une donnée d’entrée est invalide (logique métier)
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity&lt;Map&lt;String, Object&gt;&gt; handleBadRequest(IllegalArgumentException ex) {
+
+<span class="nc" id="L30">        Map&lt;String, Object&gt; error = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L31">        error.put(&quot;message&quot;, ex.getMessage());</span>
+<span class="nc" id="L32">        error.put(&quot;status&quot;, HttpStatus.BAD_REQUEST.value());</span>
+
+<span class="nc" id="L34">        return new ResponseEntity&lt;&gt;(error, HttpStatus.BAD_REQUEST);</span>
+    }
+
+    //Erreur 500 pour toute erreur non répertorié
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity&lt;Map&lt;String, Object&gt;&gt; handleException(Exception ex) {
+
+<span class="nc" id="L41">        Map&lt;String, Object&gt; error = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L42">        error.put(&quot;message&quot;, &quot;Internal server error&quot;);</span>
+<span class="nc" id="L43">        error.put(&quot;status&quot;, HttpStatus.INTERNAL_SERVER_ERROR.value());</span>
+
+<span class="nc" id="L45">        return new ResponseEntity&lt;&gt;(error, HttpStatus.INTERNAL_SERVER_ERROR);</span>
+    }
+
+    //Gere les données invalide lors d'une requête (@valid, @NotBlank)
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity&lt;Map&lt;String, Object&gt;&gt; handleValidationException(MethodArgumentNotValidException ex) {
+<span class="fc" id="L51">        Map&lt;String, String&gt; validationErrors = new HashMap&lt;&gt;();</span>
+
+<span class="fc" id="L53">        ex.getBindingResult().getFieldErrors().forEach(fieldError -&gt;</span>
+<span class="fc" id="L54">                validationErrors.put(fieldError.getField(), fieldError.getDefaultMessage())</span>
+        );
+
+<span class="fc" id="L57">        Map&lt;String, Object&gt; error = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L58">        error.put(&quot;message&quot;, &quot;Validation error&quot;);</span>
+<span class="fc" id="L59">        error.put(&quot;status&quot;, HttpStatus.BAD_REQUEST.value());</span>
+<span class="fc" id="L60">        error.put(&quot;errors&quot;, validationErrors);</span>
+
+<span class="fc" id="L62">        return new ResponseEntity&lt;&gt;(error, HttpStatus.BAD_REQUEST);</span>
+    }
+
+    //Erreur de concurrence
+    @ExceptionHandler(ObjectOptimisticLockingFailureException.class)
+    public ResponseEntity&lt;String&gt; handleOptimisticLocking() {
+<span class="nc" id="L68">        return ResponseEntity.status(HttpStatus.CONFLICT)</span>
+<span class="nc" id="L69">                .body(&quot;La ressource a été modifiée par un autre utilisateur. Veuillez recharger la page.&quot;);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

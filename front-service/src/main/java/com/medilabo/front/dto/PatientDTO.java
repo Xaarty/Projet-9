@@ -24,6 +24,8 @@ public class PatientDTO {
     private String address;
     private String phone;
 
+    private Long version;
+
     public PatientDTO() {
     }
 
@@ -91,5 +93,13 @@ public class PatientDTO {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public Long getVersion() {
+        return version;
+    }
+
+    public void setVersion(Long version) {
+        this.version = version;
     }
 }

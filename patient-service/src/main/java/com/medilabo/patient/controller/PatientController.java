@@ -32,6 +32,12 @@ public class PatientController {
         return patientService.getAllPatients(page, size);
     }
 
+    // Récupération d'un patient par ID
+    @GetMapping("/{id}")
+    public ResponseEntity<PatientDTO> getPatientById(@PathVariable Integer id) {
+        return ResponseEntity.ok(patientService.getPatientById(id));
+    }
+
     //Recherche de patient par nom voir prénom si renseigné
     @GetMapping("/search")
     public ResponseEntity<List<PatientDTO>> searchPatients(

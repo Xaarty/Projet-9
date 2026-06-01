@@ -2,6 +2,7 @@ package com.medilabo.patient.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import jakarta.persistence.Version;
 
 @Entity
 @Table(name = "patients")
@@ -26,6 +27,9 @@ public class Patient {
     private String address;
 
     private String phone;
+
+    @Version
+    private Long version;
 
     public Patient() {
     }
@@ -94,5 +98,13 @@ public class Patient {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public Long getVersion() {
+        return version;
+    }
+
+    public void setVersion(Long version) {
+        this.version = version;
     }
 }

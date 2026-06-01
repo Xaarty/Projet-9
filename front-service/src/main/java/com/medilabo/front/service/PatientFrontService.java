@@ -74,7 +74,16 @@ public class PatientFrontService {
 
         HttpEntity<PatientDTO> entity = new HttpEntity<>(patientDTO, headers);
 
-        restTemplate.exchange(url, HttpMethod.PUT, entity, PatientDTO.class);
+        ResponseEntity<PatientDTO> response = restTemplate.exchange(
+                url,
+                HttpMethod.PUT,
+                entity,
+                PatientDTO.class
+        );
+
+        if (!response.getStatusCode().is2xxSuccessful()) {
+            throw new RuntimeException("Failed to update patient: " + response.getStatusCode());
+        }
     }
 
     // Cherche un patient via nom de famille et prénom si renseigné, avec pagination
