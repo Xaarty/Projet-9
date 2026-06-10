@@ -5,58 +5,134 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0ad5c874-6e29-4221-9972-c439f35008b4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assessment-service/src/test/java/com/medilabo/assessment/client/NotesClientTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assessment-service/src/test/java/com/medilabo/assessment/client/PatientClientTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assessment-service/src/test/java/com/medilabo/assessment/config/RestTemplateConfigTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assessment-service/src/test/java/com/medilabo/assessment/controller/AssessmentControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assessment-service/src/test/java/com/medilabo/assessment/dto/DtoTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assessment-service/src/test/java/com/medilabo/assessment/exception/GlobalExceptionHandlerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-service/src/test/java/com/medilabo/front/config/AppConfigTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-service/src/test/java/com/medilabo/front/config/SecurityConfigTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-service/src/test/java/com/medilabo/front/controller/AuthControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-service/src/test/java/com/medilabo/front/dto/DtoTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-service/src/test/java/com/medilabo/front/exception/GlobalExceptionHandlerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notes-service/src/test/java/com/medilabo/notes/controller/NoteControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notes-service/src/test/java/com/medilabo/notes/dto/NoteDTOTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notes-service/src/test/java/com/medilabo/notes/exception/GlobalExceptionHandlerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notes-service/src/test/java/com/medilabo/notes/exception/NotFoundExceptionTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notes-service/src/test/java/com/medilabo/notes/model/NoteTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notes-service/src/test/java/com/medilabo/notes/service/NoteServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patient-service/src/test/java/com/medilabo/patient/exception/GlobalExceptionHandlerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patient-service/src/test/java/com/medilabo/patient/exception/NotFoundExceptionTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assessment-service/target/assessment-service-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/assessment-service/target/assessment-service-0.0.1-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assessment-service/target/assessment-service-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/assessment-service/target/assessment-service-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assessment-service/target/classes/com/medilabo/assessment/client/NotesClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/assessment-service/target/classes/com/medilabo/assessment/client/NotesClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assessment-service/target/classes/com/medilabo/assessment/client/PatientClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/assessment-service/target/classes/com/medilabo/assessment/client/PatientClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assessment-service/target/classes/com/medilabo/assessment/service/AssessmentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/assessment-service/target/classes/com/medilabo/assessment/service/AssessmentService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-service/src/main/java/com/medilabo/front/controller/PatientWebController.java" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/src/main/java/com/medilabo/front/controller/PatientWebController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-service/src/main/java/com/medilabo/front/dto/PatientDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/src/main/java/com/medilabo/front/dto/PatientDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-service/src/main/java/com/medilabo/front/service/PatientFrontService.java" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/src/main/java/com/medilabo/front/service/PatientFrontService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-service/src/main/resources/templates/patient-form.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/src/main/resources/templates/patient-form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-service/src/main/resources/templates/patients.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/src/main/resources/templates/patients.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-service/target/classes/com/medilabo/front/config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/classes/com/medilabo/front/config/SecurityConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-service/target/classes/com/medilabo/front/controller/PatientWebController.class" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/classes/com/medilabo/front/controller/PatientWebController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-service/target/classes/com/medilabo/front/dto/PatientDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/classes/com/medilabo/front/dto/PatientDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-service/target/classes/com/medilabo/front/service/AssessmentClientService.class" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/classes/com/medilabo/front/service/AssessmentClientService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-service/target/classes/com/medilabo/front/service/PatientFrontService$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/classes/com/medilabo/front/service/PatientFrontService$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-service/target/classes/com/medilabo/front/service/PatientFrontService.class" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/classes/com/medilabo/front/service/PatientFrontService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-service/target/classes/templates/patient-form.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/classes/templates/patient-form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-service/target/classes/templates/patients.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/classes/templates/patients.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-service/target/front-service-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/front-service-0.0.1-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-service/target/front-service-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/front-service-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway-service/target/gateway-service-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/gateway-service/target/gateway-service-0.0.1-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway-service/target/gateway-service-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/gateway-service/target/gateway-service-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes-service/src/main/java/com/medilabo/notes/dto/NoteDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/notes-service/src/main/java/com/medilabo/notes/dto/NoteDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes-service/src/main/java/com/medilabo/notes/model/Note.java" beforeDir="false" afterPath="$PROJECT_DIR$/notes-service/src/main/java/com/medilabo/notes/model/Note.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes-service/target/classes/com/medilabo/notes/dto/NoteDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/notes-service/target/classes/com/medilabo/notes/dto/NoteDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes-service/target/classes/com/medilabo/notes/exception/GlobalExceptionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/notes-service/target/classes/com/medilabo/notes/exception/GlobalExceptionHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes-service/target/classes/com/medilabo/notes/model/Note.class" beforeDir="false" afterPath="$PROJECT_DIR$/notes-service/target/classes/com/medilabo/notes/model/Note.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assessment-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/assessment-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assessment-service/src/test/java/com/medilabo/assessment/service/AssessmentServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/assessment-service/src/test/java/com/medilabo/assessment/service/AssessmentServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assessment-service/target/assessment-service-0.0.1-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assessment-service/target/assessment-service-0.0.1-SNAPSHOT.jar.original" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assessment-service/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assessment-service/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/assessment-service/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assessment-service/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/assessment-service/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assessment-service/target/test-classes/com/medilabo/assessment/service/AssessmentServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/assessment-service/target/test-classes/com/medilabo/assessment/service/AssessmentServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/src/test/java/com/medilabo/front/controller/PatientWebControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/src/test/java/com/medilabo/front/controller/PatientWebControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/src/test/java/com/medilabo/front/service/PatientFrontServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/src/test/java/com/medilabo/front/service/PatientFrontServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/front-service-0.0.1-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/front-service-0.0.1-SNAPSHOT.jar.original" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/jacoco.exec" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/jacoco.exec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.config/AppConfig.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.config/AppConfig.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.config/AppConfig.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.config/AppConfig.java.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.config/SecurityConfig.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.config/SecurityConfig.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.config/SecurityConfig.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.config/SecurityConfig.java.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.config/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.config/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.config/index.source.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.config/index.source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.controller/AuthController.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.controller/AuthController.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.controller/AuthController.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.controller/AuthController.java.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.controller/PatientWebController.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.controller/PatientWebController.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.controller/PatientWebController.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.controller/PatientWebController.java.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.controller/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.controller/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.controller/index.source.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.controller/index.source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.dto/AssessmentDTO.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.dto/AssessmentDTO.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.dto/AssessmentDTO.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.dto/AssessmentDTO.java.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.dto/NotesDTO.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.dto/NotesDTO.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.dto/NotesDTO.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.dto/NotesDTO.java.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.dto/PatientDTO.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.dto/PatientDTO.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.dto/PatientDTO.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.dto/PatientDTO.java.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.dto/PatientPageDTO.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.dto/PatientPageDTO.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.dto/PatientPageDTO.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.dto/PatientPageDTO.java.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.dto/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.dto/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.dto/index.source.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.dto/index.source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.exception/GlobalExceptionHandler.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.exception/GlobalExceptionHandler.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.exception/GlobalExceptionHandler.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.exception/GlobalExceptionHandler.java.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.exception/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.exception/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.exception/index.source.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.exception/index.source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.service/AssessmentClientService.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.service/AssessmentClientService.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.service/AssessmentClientService.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.service/AssessmentClientService.java.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.service/PatientFrontService$1.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.service/PatientFrontService$1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.service/PatientFrontService.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.service/PatientFrontService.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.service/PatientFrontService.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.service/PatientFrontService.java.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.service/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.service/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.service/index.source.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/site/jacoco/com.medilabo.front.service/index.source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/site/jacoco/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/site/jacoco/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/site/jacoco/jacoco-sessions.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/site/jacoco/jacoco-sessions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/site/jacoco/jacoco.csv" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/site/jacoco/jacoco.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/site/jacoco/jacoco.xml" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/site/jacoco/jacoco.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/surefire-reports/TEST-com.medilabo.front.controller.PatientWebControllerTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/surefire-reports/TEST-com.medilabo.front.controller.PatientWebControllerTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/surefire-reports/TEST-com.medilabo.front.service.PatientFrontServiceTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/surefire-reports/TEST-com.medilabo.front.service.PatientFrontServiceTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/surefire-reports/com.medilabo.front.controller.PatientWebControllerTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/surefire-reports/com.medilabo.front.controller.PatientWebControllerTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/surefire-reports/com.medilabo.front.service.PatientFrontServiceTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/surefire-reports/com.medilabo.front.service.PatientFrontServiceTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/test-classes/com/medilabo/front/controller/PatientWebControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/test-classes/com/medilabo/front/controller/PatientWebControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-service/target/test-classes/com/medilabo/front/service/PatientFrontServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/front-service/target/test-classes/com/medilabo/front/service/PatientFrontServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/notes-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes-service/src/main/java/com/medilabo/notes/service/NoteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/notes-service/src/main/java/com/medilabo/notes/service/NoteService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notes-service/target/classes/com/medilabo/notes/service/NoteService.class" beforeDir="false" afterPath="$PROJECT_DIR$/notes-service/target/classes/com/medilabo/notes/service/NoteService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes-service/target/notes-service-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/notes-service/target/notes-service-0.0.1-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes-service/target/notes-service-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/notes-service/target/notes-service-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patient-service/src/main/java/com/medilabo/patient/controller/PatientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/patient-service/src/main/java/com/medilabo/patient/controller/PatientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patient-service/src/main/java/com/medilabo/patient/dto/PatientDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/patient-service/src/main/java/com/medilabo/patient/dto/PatientDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patient-service/src/main/java/com/medilabo/patient/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/patient-service/src/main/java/com/medilabo/patient/exception/GlobalExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patient-service/src/main/java/com/medilabo/patient/model/Patient.java" beforeDir="false" afterPath="$PROJECT_DIR$/patient-service/src/main/java/com/medilabo/patient/model/Patient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patient-service/src/main/java/com/medilabo/patient/service/PatientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/patient-service/src/main/java/com/medilabo/patient/service/PatientService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes-service/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes-service/target/notes-service-0.0.1-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes-service/target/notes-service-0.0.1-SNAPSHOT.jar.original" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/patient-service/src/test/java/com/medilabo/patient/controller/PatientControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/patient-service/src/test/java/com/medilabo/patient/controller/PatientControllerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/patient-service/src/test/java/com/medilabo/patient/service/PatientServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/patient-service/src/test/java/com/medilabo/patient/service/PatientServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patient-service/target/classes/com/medilabo/patient/controller/PatientController.class" beforeDir="false" afterPath="$PROJECT_DIR$/patient-service/target/classes/com/medilabo/patient/controller/PatientController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patient-service/target/classes/com/medilabo/patient/dto/PatientDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/patient-service/target/classes/com/medilabo/patient/dto/PatientDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patient-service/target/classes/com/medilabo/patient/exception/GlobalExceptionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/patient-service/target/classes/com/medilabo/patient/exception/GlobalExceptionHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patient-service/target/classes/com/medilabo/patient/model/Patient.class" beforeDir="false" afterPath="$PROJECT_DIR$/patient-service/target/classes/com/medilabo/patient/model/Patient.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/patient-service/target/classes/com/medilabo/patient/service/PatientService.class" beforeDir="false" afterPath="$PROJECT_DIR$/patient-service/target/classes/com/medilabo/patient/service/PatientService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patient-service/target/jacoco.exec" beforeDir="false" afterPath="$PROJECT_DIR$/patient-service/target/jacoco.exec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patient-service/target/maven-archiver/pom.properties" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/patient-service/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/patient-service/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patient-service/target/patient-service-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/patient-service/target/patient-service-0.0.1-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patient-service/target/patient-service-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/patient-service/target/patient-service-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patient-service/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/patient-service/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patient-service/target/patient-service-0.0.1-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/patient-service/target/patient-service-0.0.1-SNAPSHOT.jar.original" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/patient-service/target/site/jacoco/com.medilabo.patient.exception/GlobalExceptionHandler.html" beforeDir="false" afterPath="$PROJECT_DIR$/patient-service/target/site/jacoco/com.medilabo.patient.exception/GlobalExceptionHandler.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patient-service/target/site/jacoco/com.medilabo.patient.exception/GlobalExceptionHandler.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/patient-service/target/site/jacoco/com.medilabo.patient.exception/GlobalExceptionHandler.java.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patient-service/target/site/jacoco/com.medilabo.patient.exception/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/patient-service/target/site/jacoco/com.medilabo.patient.exception/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patient-service/target/site/jacoco/com.medilabo.patient.exception/index.source.html" beforeDir="false" afterPath="$PROJECT_DIR$/patient-service/target/site/jacoco/com.medilabo.patient.exception/index.source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patient-service/target/site/jacoco/com.medilabo.patient.model/Patient.html" beforeDir="false" afterPath="$PROJECT_DIR$/patient-service/target/site/jacoco/com.medilabo.patient.model/Patient.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patient-service/target/site/jacoco/com.medilabo.patient.model/Patient.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/patient-service/target/site/jacoco/com.medilabo.patient.model/Patient.java.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patient-service/target/site/jacoco/com.medilabo.patient.model/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/patient-service/target/site/jacoco/com.medilabo.patient.model/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patient-service/target/site/jacoco/com.medilabo.patient.model/index.source.html" beforeDir="false" afterPath="$PROJECT_DIR$/patient-service/target/site/jacoco/com.medilabo.patient.model/index.source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patient-service/target/site/jacoco/com.medilabo.patient.service/PatientService.html" beforeDir="false" afterPath="$PROJECT_DIR$/patient-service/target/site/jacoco/com.medilabo.patient.service/PatientService.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patient-service/target/site/jacoco/com.medilabo.patient.service/PatientService.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/patient-service/target/site/jacoco/com.medilabo.patient.service/PatientService.java.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patient-service/target/site/jacoco/com.medilabo.patient.service/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/patient-service/target/site/jacoco/com.medilabo.patient.service/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patient-service/target/site/jacoco/com.medilabo.patient.service/index.source.html" beforeDir="false" afterPath="$PROJECT_DIR$/patient-service/target/site/jacoco/com.medilabo.patient.service/index.source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patient-service/target/site/jacoco/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/patient-service/target/site/jacoco/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patient-service/target/site/jacoco/jacoco-sessions.html" beforeDir="false" afterPath="$PROJECT_DIR$/patient-service/target/site/jacoco/jacoco-sessions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patient-service/target/site/jacoco/jacoco.csv" beforeDir="false" afterPath="$PROJECT_DIR$/patient-service/target/site/jacoco/jacoco.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patient-service/target/site/jacoco/jacoco.xml" beforeDir="false" afterPath="$PROJECT_DIR$/patient-service/target/site/jacoco/jacoco.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patient-service/target/surefire-reports/TEST-com.medilabo.patient.controller.PatientControllerTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/patient-service/target/surefire-reports/TEST-com.medilabo.patient.controller.PatientControllerTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patient-service/target/surefire-reports/TEST-com.medilabo.patient.service.PatientServiceTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/patient-service/target/surefire-reports/TEST-com.medilabo.patient.service.PatientServiceTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patient-service/target/surefire-reports/com.medilabo.patient.controller.PatientControllerTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/patient-service/target/surefire-reports/com.medilabo.patient.controller.PatientControllerTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patient-service/target/surefire-reports/com.medilabo.patient.service.PatientServiceTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/patient-service/target/surefire-reports/com.medilabo.patient.service.PatientServiceTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patient-service/target/test-classes/com/medilabo/patient/controller/PatientControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/patient-service/target/test-classes/com/medilabo/patient/controller/PatientControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patient-service/target/test-classes/com/medilabo/patient/service/PatientServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/patient-service/target/test-classes/com/medilabo/patient/service/PatientServiceTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -81,20 +157,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Maven.front-service [package].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.patient-service [package].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;tests&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/caill/Desktop/Projetopen Java/Projet9/Projet-9&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Maven.assessment-service [clean].executor": "Run",
+    "Maven.assessment-service [test].executor": "Run",
+    "Maven.front-service [clean].executor": "Run",
+    "Maven.front-service [package].executor": "Run",
+    "Maven.front-service [test].executor": "Run",
+    "Maven.notes-service [clean].executor": "Run",
+    "Maven.notes-service [install].executor": "Run",
+    "Maven.notes-service [test].executor": "Run",
+    "Maven.patient-service [clean].executor": "Run",
+    "Maven.patient-service [package].executor": "Run",
+    "Maven.patient-service [test].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "tests",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/caill/Desktop/Projetopen Java/Projet9/Projet-9",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

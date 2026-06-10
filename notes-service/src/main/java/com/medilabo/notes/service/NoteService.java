@@ -72,11 +72,15 @@ public class NoteService {
 
     // Convertit l’entité MongoDB pour la manipuler
     private NoteDTO convertToDTO(Note note) {
-        return new NoteDTO(
+        NoteDTO dto = new NoteDTO(
                 note.getId(),
                 note.getPatientId(),
                 note.getNote(),
                 note.getCreatedAt()
         );
+
+        dto.setVersion(note.getVersion());
+
+        return dto;
     }
 }

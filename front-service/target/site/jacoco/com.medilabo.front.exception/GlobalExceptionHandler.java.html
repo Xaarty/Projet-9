@@ -12,33 +12,33 @@ import org.springframework.web.client.ResourceAccessException;
     //Erreur 404 lorsqu'une ressource est introuvable
     @ExceptionHandler(HttpClientErrorException.NotFound.class)
     public String handleNotFound(HttpClientErrorException.NotFound ex, Model model) {
-<span class="nc" id="L15">        model.addAttribute(&quot;errorTitle&quot;, &quot;Resource not found&quot;);</span>
-<span class="nc" id="L16">        model.addAttribute(&quot;errorMessage&quot;, &quot;The requested resource could not be found.&quot;);</span>
-<span class="nc" id="L17">        return &quot;error&quot;;</span>
+<span class="fc" id="L15">        model.addAttribute(&quot;errorTitle&quot;, &quot;Resource not found&quot;);</span>
+<span class="fc" id="L16">        model.addAttribute(&quot;errorMessage&quot;, &quot;The requested resource could not be found.&quot;);</span>
+<span class="fc" id="L17">        return &quot;error&quot;;</span>
     }
 
     //Erreur 503 lorsqu'un appel a un service externe est indisponible
     @ExceptionHandler(ResourceAccessException.class)
     public String handleServiceUnavailable(ResourceAccessException ex, Model model) {
-<span class="nc" id="L23">        model.addAttribute(&quot;errorTitle&quot;, &quot;Service unavailable&quot;);</span>
-<span class="nc" id="L24">        model.addAttribute(&quot;errorMessage&quot;, &quot;A required backend service is currently unavailable.&quot;);</span>
-<span class="nc" id="L25">        return &quot;error&quot;;</span>
+<span class="fc" id="L23">        model.addAttribute(&quot;errorTitle&quot;, &quot;Service unavailable&quot;);</span>
+<span class="fc" id="L24">        model.addAttribute(&quot;errorMessage&quot;, &quot;A required backend service is currently unavailable.&quot;);</span>
+<span class="fc" id="L25">        return &quot;error&quot;;</span>
     }
 
     //Erreur 400 lorsqu’une donnée d’entrée est invalide (logique métier)
     @ExceptionHandler(IllegalArgumentException.class)
     public String handleBadRequest(IllegalArgumentException ex, Model model) {
-<span class="nc" id="L31">        model.addAttribute(&quot;errorTitle&quot;, &quot;Invalid request&quot;);</span>
-<span class="nc" id="L32">        model.addAttribute(&quot;errorMessage&quot;, ex.getMessage());</span>
-<span class="nc" id="L33">        return &quot;error&quot;;</span>
+<span class="fc" id="L31">        model.addAttribute(&quot;errorTitle&quot;, &quot;Invalid request&quot;);</span>
+<span class="fc" id="L32">        model.addAttribute(&quot;errorMessage&quot;, ex.getMessage());</span>
+<span class="fc" id="L33">        return &quot;error&quot;;</span>
     }
 
     //Erreur 500 pour toute erreur non répertorié
     @ExceptionHandler(Exception.class)
     public String handleException(Exception ex, Model model) {
-<span class="nc" id="L39">        model.addAttribute(&quot;errorTitle&quot;, &quot;Internal server error&quot;);</span>
-<span class="nc" id="L40">        model.addAttribute(&quot;errorMessage&quot;, &quot;An unexpected error occurred.&quot;);</span>
-<span class="nc" id="L41">        return &quot;error&quot;;</span>
+<span class="fc" id="L39">        model.addAttribute(&quot;errorTitle&quot;, &quot;Internal server error&quot;);</span>
+<span class="fc" id="L40">        model.addAttribute(&quot;errorMessage&quot;, &quot;An unexpected error occurred.&quot;);</span>
+<span class="fc" id="L41">        return &quot;error&quot;;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

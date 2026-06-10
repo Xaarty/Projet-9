@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AssessmentService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">assessment-service</a> &gt; <a href="index.source.html" class="el_package">com.medilabo.assessment.service</a> &gt; <span class="el_source">AssessmentService.java</span></div><h1>AssessmentService.java</h1><pre class="source lang-java linenums">package com.medilabo.assessment.service;
+
+import com.medilabo.assessment.client.NotesClient;
+import com.medilabo.assessment.client.PatientClient;
+import com.medilabo.assessment.dto.AssessmentResponseDTO;
+import com.medilabo.assessment.dto.NoteDTO;
+import com.medilabo.assessment.dto.PatientDTO;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.stereotype.Service;
+
+import java.text.Normalizer;
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Locale;
+import java.util.Set;
+
+@Service
+public class AssessmentService {
+
+    // Liste des déclencheurs medicaux
+<span class="fc" id="L24">    private static final List&lt;String&gt; TRIGGERS = List.of(</span>
+            &quot;hemoglobin a1c&quot;,
+            &quot;microalbumin&quot;,
+            &quot;taille&quot;,
+            &quot;poids&quot;,
+            &quot;fumeur&quot;,
+            &quot;fumeuse&quot;,
+            &quot;anormal&quot;,
+            &quot;cholesterol&quot;,
+            &quot;vertiges&quot;,
+            &quot;rechute&quot;,
+            &quot;reaction&quot;,
+            &quot;anticorps&quot;
+    );
+
+    private final PatientClient patientClient;
+    private final NotesClient notesClient;
+
+<span class="fc" id="L42">    public AssessmentService(PatientClient patientClient, NotesClient notesClient) {</span>
+<span class="fc" id="L43">        this.patientClient = patientClient;</span>
+<span class="fc" id="L44">        this.notesClient = notesClient;</span>
+<span class="fc" id="L45">    }</span>
+
+    @Cacheable(&quot;assessments&quot;)
+    public AssessmentResponseDTO assessPatient(Integer patientId) {
+        // Récupération des données patient et des notes via microservices
+<span class="fc" id="L50">        PatientDTO patient = patientClient.getPatientById(patientId);</span>
+<span class="fc" id="L51">        List&lt;NoteDTO&gt; notes = notesClient.getNotesByPatientId(patientId);</span>
+
+        // Calcul de l’âge du patient
+<span class="fc" id="L54">        int age = calculateAge(patient.getBirthDate());</span>
+
+        // Recherche des déclencheurs dans les notes
+<span class="fc" id="L57">        List&lt;String&gt; matchedTriggers = findMatchedTriggers(notes);</span>
+<span class="fc" id="L58">        int triggerCount = matchedTriggers.size();</span>
+
+        // Détermination du niveau de risque selon les règles métier
+<span class="fc" id="L61">        String assessment = determineAssessment(age, patient.getGender(), triggerCount);</span>
+
+        // Réponse envoyé au front
+<span class="fc" id="L64">        AssessmentResponseDTO response = new AssessmentResponseDTO();</span>
+<span class="fc" id="L65">        response.setPatientId(patient.getId());</span>
+<span class="fc" id="L66">        response.setFirstName(patient.getFirstName());</span>
+<span class="fc" id="L67">        response.setLastName(patient.getLastName());</span>
+<span class="fc" id="L68">        response.setAge(age);</span>
+<span class="fc" id="L69">        response.setTriggerCount(triggerCount);</span>
+<span class="fc" id="L70">        response.setAssessment(assessment);</span>
+<span class="fc" id="L71">        response.setMatchedTriggers(matchedTriggers);</span>
+
+<span class="fc" id="L73">        return response;</span>
+    }
+
+    // Calcul de l’âge
+    int calculateAge(LocalDate birthDate) {
+<span class="fc" id="L78">        return Period.between(birthDate, LocalDate.now()).getYears();</span>
+    }
+
+    // Retourneles nombre déclencheurs
+    int countTriggers(List&lt;NoteDTO&gt; notes) {
+<span class="fc" id="L83">        return findMatchedTriggers(notes).size();</span>
+    }
+
+    List&lt;String&gt; findMatchedTriggers(List&lt;NoteDTO&gt; notes) {
+<span class="fc bfc" id="L87" title="All 4 branches covered.">        if (notes == null || notes.isEmpty()) {</span>
+<span class="fc" id="L88">            return List.of();</span>
+        }
+
+        // Concatènation des notes pour rechercher les mots-clés plus facilement
+<span class="fc" id="L92">        String combinedNotes = notes.stream()</span>
+<span class="fc" id="L93">                .map(NoteDTO::getNote)</span>
+<span class="pc bpc" id="L94" title="2 of 4 branches missed.">                .filter(note -&gt; note != null &amp;&amp; !note.isBlank())</span>
+<span class="fc" id="L95">                .map(this::normalize)</span>
+<span class="fc" id="L96">                .reduce(&quot;&quot;, (a, b) -&gt; a + &quot; &quot; + b);</span>
+
+        // Gestion des doublons
+<span class="fc" id="L99">        Set&lt;String&gt; matched = new LinkedHashSet&lt;&gt;();</span>
+
+<span class="fc bfc" id="L101" title="All 2 branches covered.">        for (String trigger : TRIGGERS) {</span>
+<span class="fc bfc" id="L102" title="All 2 branches covered.">            if (combinedNotes.contains(trigger)) {</span>
+<span class="fc" id="L103">                matched.add(trigger);</span>
+            }
+<span class="fc" id="L105">        }</span>
+
+<span class="fc" id="L107">        return new ArrayList&lt;&gt;(matched);</span>
+    }
+
+    String determineAssessment(int age, String gender, int triggerCount) {
+<span class="fc" id="L111">        boolean isMale = &quot;M&quot;.equalsIgnoreCase(gender);</span>
+<span class="fc" id="L112">        boolean isFemale = &quot;F&quot;.equalsIgnoreCase(gender);</span>
+
+        // Cas des patients de plus de 30 ans
+<span class="fc bfc" id="L115" title="All 2 branches covered.">        if (age &gt; 30) {</span>
+<span class="fc bfc" id="L116" title="All 2 branches covered.">            if (triggerCount &gt;= 8) {</span>
+<span class="fc" id="L117">                return &quot;EarlyOnset&quot;;</span>
+            }
+<span class="fc bfc" id="L119" title="All 2 branches covered.">            if (triggerCount &gt;= 6) {</span>
+<span class="fc" id="L120">                return &quot;InDanger&quot;;</span>
+            }
+<span class="pc bpc" id="L122" title="1 of 2 branches missed.">            if (triggerCount &gt;= 2) {</span>
+<span class="fc" id="L123">                return &quot;Borderline&quot;;</span>
+            }
+<span class="nc" id="L125">            return &quot;None&quot;;</span>
+        }
+
+        // Cas des hommes de moins de 30 ans
+<span class="fc bfc" id="L129" title="All 2 branches covered.">        if (isMale) {</span>
+<span class="fc bfc" id="L130" title="All 2 branches covered.">            if (triggerCount &gt;= 5) {</span>
+<span class="fc" id="L131">                return &quot;EarlyOnset&quot;;</span>
+            }
+<span class="fc bfc" id="L133" title="All 2 branches covered.">            if (triggerCount &gt;= 3) {</span>
+<span class="fc" id="L134">                return &quot;InDanger&quot;;</span>
+            }
+<span class="fc" id="L136">            return &quot;None&quot;;</span>
+        }
+
+        // Cas des femmes de moins de 30 ans
+<span class="pc bpc" id="L140" title="1 of 2 branches missed.">        if (isFemale) {</span>
+<span class="fc bfc" id="L141" title="All 2 branches covered.">            if (triggerCount &gt;= 7) {</span>
+<span class="fc" id="L142">                return &quot;EarlyOnset&quot;;</span>
+            }
+<span class="fc bfc" id="L144" title="All 2 branches covered.">            if (triggerCount &gt;= 4) {</span>
+<span class="fc" id="L145">                return &quot;InDanger&quot;;</span>
+            }
+<span class="fc" id="L147">            return &quot;None&quot;;</span>
+        }
+
+<span class="nc" id="L150">        return &quot;None&quot;;</span>
+    }
+
+    // Supprime les accents et converti en minuscules pour recherche de mots clé
+    String normalize(String input) {
+<span class="fc" id="L155">        String normalized = Normalizer.normalize(input, Normalizer.Form.NFD);</span>
+<span class="fc" id="L156">        return normalized.replaceAll(&quot;\\p{M}&quot;, &quot;&quot;).toLowerCase(Locale.ROOT);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

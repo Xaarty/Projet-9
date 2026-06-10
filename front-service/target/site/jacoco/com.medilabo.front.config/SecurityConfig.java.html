@@ -11,49 +11,49 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
-<span class="nc" id="L14">public class SecurityConfig {</span>
+<span class="fc" id="L14">public class SecurityConfig {</span>
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-<span class="nc" id="L18">        http</span>
-<span class="nc" id="L19">                .authorizeHttpRequests(auth -&gt; auth</span>
+<span class="fc" id="L18">        http</span>
+<span class="fc" id="L19">                .authorizeHttpRequests(auth -&gt; auth</span>
                         // Autorise l’accès au style, le logo et à la page de login
-<span class="nc" id="L21">                        .requestMatchers(&quot;/css/**&quot;).permitAll()</span>
-<span class="nc" id="L22">                        .requestMatchers(&quot;/login&quot;).permitAll()</span>
-<span class="nc" id="L23">                        .requestMatchers(&quot;/images/**&quot;).permitAll()</span>
+<span class="fc" id="L21">                        .requestMatchers(&quot;/css/**&quot;).permitAll()</span>
+<span class="fc" id="L22">                        .requestMatchers(&quot;/login&quot;).permitAll()</span>
+<span class="fc" id="L23">                        .requestMatchers(&quot;/images/**&quot;).permitAll()</span>
                         // Ou les autres requêtes nécessitant une authentification
-<span class="nc" id="L25">                        .anyRequest().authenticated()</span>
+<span class="fc" id="L25">                        .anyRequest().authenticated()</span>
                 )
-<span class="nc" id="L27">                .formLogin(form -&gt; form</span>
-<span class="nc" id="L28">                        .loginPage(&quot;/login&quot;)</span>
+<span class="fc" id="L27">                .formLogin(form -&gt; form</span>
+<span class="fc" id="L28">                        .loginPage(&quot;/login&quot;)</span>
                         // Redirection vers la liste des patients après connexion
-<span class="nc" id="L30">                        .defaultSuccessUrl(&quot;/patients&quot;, true)</span>
-<span class="nc" id="L31">                        .permitAll()</span>
+<span class="fc" id="L30">                        .defaultSuccessUrl(&quot;/patients&quot;, true)</span>
+<span class="fc" id="L31">                        .permitAll()</span>
                 )
-<span class="nc" id="L33">                .logout(logout -&gt; logout</span>
+<span class="fc" id="L33">                .logout(logout -&gt; logout</span>
                         // Redirection après déconnexion
-<span class="nc" id="L35">                        .logoutSuccessUrl(&quot;/login?logout&quot;)</span>
-<span class="nc" id="L36">                        .permitAll()</span>
+<span class="fc" id="L35">                        .logoutSuccessUrl(&quot;/login?logout&quot;)</span>
+<span class="fc" id="L36">                        .permitAll()</span>
                 );
 
-<span class="nc" id="L39">        return http.build();</span>
+<span class="fc" id="L39">        return http.build();</span>
     }
 
     @Bean
     public InMemoryUserDetailsManager userDetailsService(PasswordEncoder passwordEncoder) {
         // Utilisateur en mémoire utilisé pour l’accès au front
-<span class="nc" id="L45">        return new InMemoryUserDetailsManager(</span>
-<span class="nc" id="L46">                User.withUsername(&quot;doctor&quot;)</span>
-<span class="nc" id="L47">                        .password(passwordEncoder.encode(&quot;password&quot;))</span>
-<span class="nc" id="L48">                        .roles(&quot;USER&quot;)</span>
-<span class="nc" id="L49">                        .build()</span>
+<span class="fc" id="L45">        return new InMemoryUserDetailsManager(</span>
+<span class="fc" id="L46">                User.withUsername(&quot;doctor&quot;)</span>
+<span class="fc" id="L47">                        .password(passwordEncoder.encode(&quot;password&quot;))</span>
+<span class="fc" id="L48">                        .roles(&quot;USER&quot;)</span>
+<span class="fc" id="L49">                        .build()</span>
         );
     }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
         // Encodage sécurisé du mot de passe
-<span class="nc" id="L56">        return new BCryptPasswordEncoder();</span>
+<span class="fc" id="L56">        return new BCryptPasswordEncoder();</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

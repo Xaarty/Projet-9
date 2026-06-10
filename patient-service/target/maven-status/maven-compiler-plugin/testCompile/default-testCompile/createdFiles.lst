@@ -1,2 +1,5 @@
 com\medilabo\patient\service\PatientServiceTest.class
+com\medilabo\patient\exception\GlobalExceptionHandlerTest.class
+com\medilabo\patient\exception\NotFoundExceptionTest.class
 com\medilabo\patient\controller\PatientControllerTest.class
+com\medilabo\patient\exception\GlobalExceptionHandlerTest$PatientValidationTarget.class

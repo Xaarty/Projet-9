@@ -38,7 +38,7 @@ public class PatientPageDTO {
 <span class="fc" id="L38">    }</span>
 
     public long getTotalElements() {
-<span class="nc" id="L41">        return totalElements;</span>
+<span class="fc" id="L41">        return totalElements;</span>
     }
 
     public void setTotalElements(long totalElements) {
@@ -46,7 +46,7 @@ public class PatientPageDTO {
 <span class="fc" id="L46">    }</span>
 
     public int getTotalPages() {
-<span class="nc" id="L49">        return totalPages;</span>
+<span class="fc" id="L49">        return totalPages;</span>
     }
 
     public void setTotalPages(int totalPages) {
@@ -54,11 +54,11 @@ public class PatientPageDTO {
 <span class="fc" id="L54">    }</span>
 
     public boolean isHasPrevious() {
-<span class="pc bpc" id="L57" title="1 of 2 branches missed.">        return number &gt; 0;</span>
+<span class="fc bfc" id="L57" title="All 2 branches covered.">        return number &gt; 0;</span>
     }
 
     public boolean isHasNext() {
-<span class="pc bpc" id="L61" title="1 of 2 branches missed.">        return number + 1 &lt; totalPages;</span>
+<span class="fc bfc" id="L61" title="All 2 branches covered.">        return number + 1 &lt; totalPages;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

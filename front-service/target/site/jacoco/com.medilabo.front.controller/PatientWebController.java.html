@@ -102,10 +102,10 @@ public class PatientWebController {
                                 BindingResult bindingResult,
                                 Model model) {
 
-<span class="fc bfc" id="L105" title="All 2 branches covered.">        if (bindingResult.hasErrors()) {</span>
-<span class="fc" id="L106">            model.addAttribute(&quot;formAction&quot;, &quot;/patients/edit/&quot; + id);</span>
-<span class="fc" id="L107">            model.addAttribute(&quot;formTitle&quot;, &quot;Edit Patient&quot;);</span>
-<span class="fc" id="L108">            return &quot;patient-form&quot;;</span>
+<span class="pc bpc" id="L105" title="1 of 2 branches missed.">        if (bindingResult.hasErrors()) {</span>
+<span class="nc" id="L106">            model.addAttribute(&quot;formAction&quot;, &quot;/patients/edit/&quot; + id);</span>
+<span class="nc" id="L107">            model.addAttribute(&quot;formTitle&quot;, &quot;Edit Patient&quot;);</span>
+<span class="nc" id="L108">            return &quot;patient-form&quot;;</span>
         }
 
 <span class="fc" id="L111">        patientFrontService.updatePatient(id, patientDTO);</span>
@@ -122,28 +122,28 @@ public class PatientWebController {
     // Page d'informations du patient, des notes et son évaluation de risque de diabete
     @GetMapping(&quot;/patients/{id}/history&quot;)
     public String showPatientHistory(@PathVariable Integer id, Model model) {
-<span class="nc" id="L125">        PatientDTO patient = patientFrontService.getPatientById(id);</span>
-<span class="nc" id="L126">        List&lt;NotesDTO&gt; notes = patientFrontService.getNotesByPatientId(id);</span>
-<span class="nc" id="L127">        AssessmentDTO assessment = patientFrontService.getAssessmentByPatientId(id);</span>
+<span class="fc" id="L125">        PatientDTO patient = patientFrontService.getPatientById(id);</span>
+<span class="fc" id="L126">        List&lt;NotesDTO&gt; notes = patientFrontService.getNotesByPatientId(id);</span>
+<span class="fc" id="L127">        AssessmentDTO assessment = patientFrontService.getAssessmentByPatientId(id);</span>
 
-<span class="nc" id="L129">        model.addAttribute(&quot;patient&quot;, patient);</span>
-<span class="nc" id="L130">        model.addAttribute(&quot;notes&quot;, notes);</span>
-<span class="nc" id="L131">        model.addAttribute(&quot;assessment&quot;, assessment);</span>
+<span class="fc" id="L129">        model.addAttribute(&quot;patient&quot;, patient);</span>
+<span class="fc" id="L130">        model.addAttribute(&quot;notes&quot;, notes);</span>
+<span class="fc" id="L131">        model.addAttribute(&quot;assessment&quot;, assessment);</span>
 
-<span class="nc" id="L133">        return &quot;patient-history&quot;;</span>
+<span class="fc" id="L133">        return &quot;patient-history&quot;;</span>
     }
 
     // Création d’une note
     @PostMapping(&quot;/patients/{id}/history&quot;)
     public String addPatientNote(@PathVariable Integer id,
                                  @RequestParam String note) {
-<span class="nc" id="L140">        NotesDTO noteDTO = new NotesDTO();</span>
-<span class="nc" id="L141">        noteDTO.setPatientId(id);</span>
-<span class="nc" id="L142">        noteDTO.setNote(note);</span>
+<span class="fc" id="L140">        NotesDTO noteDTO = new NotesDTO();</span>
+<span class="fc" id="L141">        noteDTO.setPatientId(id);</span>
+<span class="fc" id="L142">        noteDTO.setNote(note);</span>
 
-<span class="nc" id="L144">        patientFrontService.createNote(noteDTO);</span>
+<span class="fc" id="L144">        patientFrontService.createNote(noteDTO);</span>
 
-<span class="nc" id="L146">        return &quot;redirect:/patients/&quot; + id + &quot;/history&quot;;</span>
+<span class="fc" id="L146">        return &quot;redirect:/patients/&quot; + id + &quot;/history&quot;;</span>
     }
 
     // Charge une note et le formulaire d’édition
@@ -151,12 +151,12 @@ public class PatientWebController {
     public String showEditNoteForm(@PathVariable Integer patientId,
                                    @PathVariable String noteId,
                                    Model model) {
-<span class="nc" id="L154">        NotesDTO note = patientFrontService.getNoteById(noteId);</span>
+<span class="fc" id="L154">        NotesDTO note = patientFrontService.getNoteById(noteId);</span>
 
-<span class="nc" id="L156">        model.addAttribute(&quot;noteItem&quot;, note);</span>
-<span class="nc" id="L157">        model.addAttribute(&quot;patientId&quot;, patientId);</span>
+<span class="fc" id="L156">        model.addAttribute(&quot;noteItem&quot;, note);</span>
+<span class="fc" id="L157">        model.addAttribute(&quot;patientId&quot;, patientId);</span>
 
-<span class="nc" id="L159">        return &quot;note-form&quot;;</span>
+<span class="fc" id="L159">        return &quot;note-form&quot;;</span>
     }
 
     // Modification de note de patient
@@ -164,12 +164,12 @@ public class PatientWebController {
     public String updatePatientNote(@PathVariable Integer patientId,
                                     @PathVariable String noteId,
                                     @RequestParam String note) {
-<span class="nc" id="L167">        NotesDTO noteDTO = patientFrontService.getNoteById(noteId);</span>
-<span class="nc" id="L168">        noteDTO.setNote(note);</span>
+<span class="fc" id="L167">        NotesDTO noteDTO = patientFrontService.getNoteById(noteId);</span>
+<span class="fc" id="L168">        noteDTO.setNote(note);</span>
 
-<span class="nc" id="L170">        patientFrontService.updateNote(noteId, noteDTO);</span>
+<span class="fc" id="L170">        patientFrontService.updateNote(noteId, noteDTO);</span>
 
-<span class="nc" id="L172">        return &quot;redirect:/patients/&quot; + patientId + &quot;/history&quot;;</span>
+<span class="fc" id="L172">        return &quot;redirect:/patients/&quot; + patientId + &quot;/history&quot;;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
