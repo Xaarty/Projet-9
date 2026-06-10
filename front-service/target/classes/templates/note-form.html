@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Edit Note</title>
+    <title>Modifier une note</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
@@ -19,22 +19,22 @@
 
         <nav class="main-nav">
             <a th:href="@{/patients}" class="nav-link">Patients</a>
-            <a th:href="@{/patients/add}" class="nav-link">Add Patient</a>
+            <a th:href="@{/patients/add}" class="nav-link">Ajouter un patient</a>
 
             <form th:action="@{/logout}" method="post" class="logout-form">
-                <button type="submit" class="nav-link nav-button">Logout</button>
+                <button type="submit" class="nav-link nav-button">Déconnexion</button>
             </form>
         </nav>
     </div>
 </header>
 
 <div class="container">
-    <h1 class="page-title">Edit Note</h1>
+    <h1 class="page-title">Modifier une note</h1>
 
     <div class="card">
         <form th:action="@{'/patients/' + ${patientId} + '/history/edit-note/' + ${noteItem.id}}" method="post" class="add-note-form">
             <div class="form-group">
-                <label for="note" class="form-label">Clinical note</label>
+                <label for="note" class="form-label">Note clinique</label>
                 <textarea id="note"
                           name="note"
                           class="input textarea-input"
@@ -43,11 +43,11 @@
             </div>
 
             <div class="form-actions">
-                <button type="submit" class="button">Save changes</button>
+                <button type="submit" class="button">Enregistrer les modifications</button>
                 <button type="button"
                         class="button button-secondary"
                         th:onclick="'window.location.href=\'/patients/' + ${patientId} + '/history\''">
-                    Cancel
+                    Annuler
                 </button>
             </div>
         </form>

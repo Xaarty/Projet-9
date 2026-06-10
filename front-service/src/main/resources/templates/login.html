@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Sign in</title>
+  <title>Connexion</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
@@ -12,27 +12,27 @@
   <img th:src="@{/images/logo.png}" alt="MediLabo Solutions" class="brand-logo">
 
   <div class="auth-card">
-    <h1>Sign in</h1>
+    <h1>Connexion</h1>
 
     <form th:action="@{/login}" method="post" class="auth-form">
       <div class="form-group">
-        <label for="username" class="form-label">Username</label>
-        <input id="username" name="username" type="text" class="input full-width" placeholder="Enter your username" required>
+        <label for="username" class="form-label">Nom d'utilisateur</label>
+        <input id="username" name="username" type="text" class="input full-width" placeholder="Saisissez votre nom d'utilisateur" required>
       </div>
 
       <div class="form-group">
-        <label for="password" class="form-label">Password</label>
-        <input id="password" name="password" type="password" class="input full-width" placeholder="Enter your password" required>
+        <label for="password" class="form-label">Mot de passe</label>
+        <input id="password" name="password" type="password" class="input full-width" placeholder="Saisissez votre mot de passe" required>
       </div>
 
       <div th:if="${param.error}" class="alert alert-error">
-        Invalid username or password.
+        Nom d'utilisateur ou mot de passe incorrect.
       </div>
 
-      <button type="submit" class="button full-width">Sign in</button>
+      <button type="submit" class="button full-width">Se connecter</button>
 
       <div th:if="${param.logout}" class="alert alert-success">
-        You have been logged out successfully.
+        Déconnexion effectuée avec succès.
       </div>
     </form>
   </div>

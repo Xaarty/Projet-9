@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Patient History</title>
+  <title>Historique patient</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
@@ -20,44 +20,44 @@
 
     <nav class="main-nav">
       <a th:href="@{/patients}" class="nav-link">Patients</a>
-      <a th:href="@{/patients/add}" class="nav-link">Add Patient</a>
+      <a th:href="@{/patients/add}" class="nav-link">Ajouter un patient</a>
 
       <form th:action="@{/logout}" method="post" class="logout-form">
-        <button type="submit" class="nav-link nav-button">Logout</button>
+        <button type="submit" class="nav-link nav-button">Déconnexion</button>
       </form>
     </nav>
   </div>
 </header>
 
 <div class="container">
-  <h1 class="page-title">Patient History</h1>
+  <h1 class="page-title">Historique patient</h1>
 
   <div class="history-layout">
 
     <div class="card patient-summary-card">
       <div class="section-header">
-        <h2 class="section-title">Patient information</h2>
+        <h2 class="section-title">Informations du patient</h2>
         <span class="patient-id-badge" th:text="'ID #' + ${patient.id}">ID #2</span>
       </div>
 
       <div class="patient-info-grid">
         <div class="info-item">
-          <span class="info-label">First Name</span>
+          <span class="info-label">Prénom</span>
           <span class="info-value" th:text="${patient.firstName}"></span>
         </div>
 
         <div class="info-item">
-          <span class="info-label">Last Name</span>
+          <span class="info-label">Nom de famille</span>
           <span class="info-value" th:text="${patient.lastName}"></span>
         </div>
 
         <div class="info-item">
-          <span class="info-label">Birth Date</span>
+          <span class="info-label">Date de naissance</span>
           <span class="info-value" th:text="${patient.birthDate}"></span>
         </div>
 
         <div class="info-item">
-          <span class="info-label">Gender</span>
+          <span class="info-label">Sexe</span>
           <span class="info-value" th:text="${patient.gender}"></span>
         </div>
       </div>
@@ -65,12 +65,12 @@
 
     <div class="card assessment-card">
       <div class="section-header">
-        <h2 class="section-title">Diabetes assessment</h2>
+        <h2 class="section-title">Évaluation du diabète</h2>
       </div>
 
       <div class="assessment-grid">
         <div class="info-item">
-          <span class="info-label">Risk level</span>
+          <span class="info-label">Niveau de risque</span>
           <span class="assessment-badge"
                 th:classappend="
                   ${assessment.assessment == 'None'} ? ' assessment-none' :
@@ -88,13 +88,13 @@
         </div>
 
         <div class="info-item">
-          <span class="info-label">Trigger count</span>
+          <span class="info-label">Nombre de déclencheurs</span>
           <span class="info-value" th:text="${assessment.triggerCount}">0</span>
         </div>
       </div>
 
       <div class="assessment-triggers" th:if="${assessment.matchedTriggers != null and !#lists.isEmpty(assessment.matchedTriggers)}">
-        <span class="info-label">Matched keywords</span>
+        <span class="info-label">Mots-clés détectés</span>
 
         <div class="trigger-list">
           <span class="trigger-chip"
@@ -114,7 +114,7 @@
       </div>
 
       <div th:if="${#lists.isEmpty(notes)}" class="empty-state">
-        No notes available for this patient.
+        Aucune note disponible pour ce patient.
       </div>
 
       <div class="notes-list" th:if="${!#lists.isEmpty(notes)}">
@@ -127,7 +127,7 @@
 
             <a class="button button-secondary note-edit-btn"
                th:href="@{'/patients/' + ${patient.id} + '/history/edit-note/' + ${noteItem.id}}">
-              Edit note
+              Modifier la note
             </a>
           </div>
 
@@ -138,20 +138,20 @@
 
     <div class="card add-note-card">
       <div class="section-header">
-        <h2 class="section-title">Add a note</h2>
+        <h2 class="section-title">Ajouter une note</h2>
       </div>
 
       <form th:action="@{'/patients/' + ${patient.id} + '/history'}" method="post" class="add-note-form">
         <div class="form-group">
-          <label for="note" class="form-label">Clinical note</label>
-          <textarea id="note" name="note" class="input textarea-input" placeholder="Enter a note" required></textarea>
+          <label for="note" class="form-label">Note clinique</label>
+          <textarea id="note" name="note" class="input textarea-input" placeholder="Saisissez une note" required></textarea>
         </div>
 
         <div class="form-actions">
-          <button type="submit" class="button">Add note</button>
+          <button type="submit" class="button">Ajouter la note</button>
           <button type="button" class="button button-secondary"
                   onclick="window.location.href='/patients'">
-            Back to patients
+            Retour aux patients
           </button>
         </div>
       </form>
