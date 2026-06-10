@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="0ad5c874-6e29-4221-9972-c439f35008b4" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/assessment-service/src/test/java/com/medilabo/assessment/client/NotesClientTest.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/assessment-service/src/test/java/com/medilabo/assessment/client/PatientClientTest.java" afterDir="false" />
@@ -122,6 +123,9 @@
       <change beforePath="$PROJECT_DIR$/patient-service/target/test-classes/com/medilabo/patient/controller/PatientControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/patient-service/target/test-classes/com/medilabo/patient/controller/PatientControllerTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/patient-service/target/test-classes/com/medilabo/patient/service/PatientServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/patient-service/target/test-classes/com/medilabo/patient/service/PatientServiceTest.class" afterDir="false" />
     </list>
+=======
+    <list default="true" id="0ad5c874-6e29-4221-9972-c439f35008b4" name="Changes" comment="" />
+>>>>>>> Stashed changes
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -157,6 +161,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< Updated upstream
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Maven.assessment-service [clean].executor": "Run",
@@ -178,8 +183,17 @@
     "project.structure.last.edited": "SDKs",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.0"
+=======
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/caill/Desktop/Projetopen Java/Projet9&quot;
+>>>>>>> Stashed changes
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

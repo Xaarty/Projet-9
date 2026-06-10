@@ -13,6 +13,12 @@
         <module name="gateway-service" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="front-service" target="17" />
+      <module name="gateway-service" target="17" />
+      <module name="notes-service" target="17" />
+      <module name="patient-service" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
