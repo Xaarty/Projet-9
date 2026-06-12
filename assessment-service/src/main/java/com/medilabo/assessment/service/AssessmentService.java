@@ -5,6 +5,7 @@ import com.medilabo.assessment.client.PatientClient;
 import com.medilabo.assessment.dto.AssessmentResponseDTO;
 import com.medilabo.assessment.dto.NoteDTO;
 import com.medilabo.assessment.dto.PatientDTO;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -44,7 +45,7 @@ public class AssessmentService {
         this.notesClient = notesClient;
     }
 
-    @Cacheable("assessments")
+    @Cacheable(value = "assessments", key = "#patientId")
     public AssessmentResponseDTO assessPatient(Integer patientId) {
         // Récupération des données patient et des notes via microservices
         PatientDTO patient = patientClient.getPatientById(patientId);
@@ -71,6 +72,10 @@ public class AssessmentService {
         response.setMatchedTriggers(matchedTriggers);
 
         return response;
+    }
+
+    @CacheEvict(value = "assessments", key = "#patientId")
+    public void evictAssessmentCache(Integer patientId) {
     }
 
     // Calcul de l’âge

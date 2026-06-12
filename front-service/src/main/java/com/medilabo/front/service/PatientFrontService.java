@@ -74,19 +74,11 @@ public class PatientFrontService {
 
         HttpEntity<PatientDTO> entity = new HttpEntity<>(patientDTO, headers);
 
-        ResponseEntity<PatientDTO> response = restTemplate.exchange(
-                url,
-                HttpMethod.PUT,
-                entity,
-                PatientDTO.class
-        );
+        restTemplate.exchange(url, HttpMethod.PUT, entity, PatientDTO.class);
 
-        if (!response.getStatusCode().is2xxSuccessful()) {
-            throw new RuntimeException("Failed to update patient: " + response.getStatusCode());
-        }
+        evictAssessmentCache(id);
     }
 
-    // Cherche un patient via nom de famille et prénom si renseigné, avec pagination
     public PatientPageDTO searchPatients(String lastName, String firstName, int page, int size) {
         StringBuilder url = new StringBuilder(
                 gatewayBaseUrl + "/patients/search?lastName=" + lastName
@@ -146,6 +138,8 @@ public class PatientFrontService {
         HttpEntity<NotesDTO> entity = new HttpEntity<>(noteDTO, headers);
 
         restTemplate.exchange(url, HttpMethod.POST, entity, NotesDTO.class);
+
+        evictAssessmentCache(noteDTO.getPatientId());
     }
 
     //Récupération de l'assessment du patient (risque diabete)
@@ -170,6 +164,18 @@ public class PatientFrontService {
                 gatewayBaseUrl + "/notes/" + id,
                 noteDTO
         );
+
+        evictAssessmentCache(noteDTO.getPatientId());
+
         return getNoteById(id);
+    }
+
+    public void evictAssessmentCache(Integer patientId) {
+        try {
+            String url = gatewayBaseUrl + "/cache/assessments/" + patientId;
+            restTemplate.exchange(url, HttpMethod.DELETE, null, Void.class);
+        } catch (Exception e) {
+            System.out.println("Cache assessment non mis a jour pour patientId=" + patientId);
+        }
     }
 }

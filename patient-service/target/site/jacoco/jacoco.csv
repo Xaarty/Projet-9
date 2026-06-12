@@ -1,8 +1,0 @@
-GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-patient-service,com.medilabo.patient.model,Patient,4,79,0,0,2,33,1,17,1,17
-patient-service,com.medilabo.patient.exception,GlobalExceptionHandler,0,121,0,0,0,23,0,7,0,7
-patient-service,com.medilabo.patient.exception,NotFoundException,0,4,0,0,0,2,0,1,0,1
-patient-service,com.medilabo.patient.service,PatientService,0,198,1,9,0,50,1,14,0,10
-patient-service,com.medilabo.patient.dto,PatientDTO,0,83,0,0,0,35,0,18,0,18
-patient-service,com.medilabo.patient.controller,PatientController,0,45,0,0,0,10,0,7,0,7
-patient-service,com.medilabo.patient,PatientServiceApplication,5,3,0,0,2,1,1,1,1,1

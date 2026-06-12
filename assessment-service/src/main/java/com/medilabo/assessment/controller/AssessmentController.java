@@ -2,6 +2,7 @@ package com.medilabo.assessment.controller;
 
 import com.medilabo.assessment.dto.AssessmentResponseDTO;
 import com.medilabo.assessment.service.AssessmentService;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,5 +20,10 @@ public class AssessmentController {
     @GetMapping("/assess/{patientId}")
     public AssessmentResponseDTO assessPatient(@PathVariable Integer patientId) {
         return assessmentService.assessPatient(patientId);
+    }
+
+    @DeleteMapping("/cache/assessments/{patientId}")
+    public void evictAssessmentCache(@PathVariable Integer patientId) {
+        assessmentService.evictAssessmentCache(patientId);
     }
 }

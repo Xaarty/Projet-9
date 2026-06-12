@@ -33,9 +33,10 @@ public class GlobalExceptionHandler {
         return "error";
     }
 
-    //Erreur 500 pour toute erreur non répertorié
     @ExceptionHandler(Exception.class)
     public String handleException(Exception ex, Model model) {
+        ex.printStackTrace(); // TEMPORAIRE POUR DEBUG
+
         model.addAttribute("errorTitle", "Internal server error");
         model.addAttribute("errorMessage", "An unexpected error occurred.");
         return "error";

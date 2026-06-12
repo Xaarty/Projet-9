@@ -75,22 +75,22 @@ public class PatientService {
     }
 
     //Recherche de patient par nom voir prénom si renseigné
-    public List<PatientDTO> searchPatients(String lastName, String firstName) {
+    public Page<PatientDTO> searchPatients(String lastName, String firstName, int page, int size) {
         if (lastName == null || lastName.isBlank()) {
             throw new IllegalArgumentException("lastName is required");
         }
 
-        List<Patient> patients;
+        Pageable pageable = PageRequest.of(page, size);
+
+        Page<Patient> patients;
 
         if (firstName != null && !firstName.isBlank()) {
-            patients = patientRepository.findByLastNameAndFirstName(lastName, firstName);
+            patients = patientRepository.findByLastNameAndFirstName(lastName, firstName, pageable);
         } else {
-            patients = patientRepository.findByLastName(lastName);
+            patients = patientRepository.findByLastName(lastName, pageable);
         }
 
-        return patients.stream()
-                .map(this::convertToDTO)
-                .toList();
+        return patients.map(this::convertToDTO);
     }
 
     // Convertit l’entité Patient en DTO

@@ -40,10 +40,13 @@ public class PatientController {
 
     //Recherche de patient par nom voir prénom si renseigné
     @GetMapping("/search")
-    public ResponseEntity<List<PatientDTO>> searchPatients(
+    public ResponseEntity<Page<PatientDTO>> searchPatients(
             @RequestParam String lastName,
-            @RequestParam(required = false) String firstName) {
-        return ResponseEntity.ok(patientService.searchPatients(lastName, firstName));
+            @RequestParam(required = false) String firstName,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "20") int size) {
+
+        return ResponseEntity.ok(patientService.searchPatients(lastName, firstName, page, size));
     }
 
     //Création d'un patient
