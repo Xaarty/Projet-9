@@ -223,24 +223,24 @@ class PatientServiceTest {
     void shouldThrowIllegalArgumentExceptionWhenSearchingPatientsWithoutLastName() {
         IllegalArgumentException exception = assertThrows(
                 IllegalArgumentException.class,
-                () -> patientService.searchPatients(null, "Clara")
+                () -> patientService.searchPatients(null, "Clara", 0, 20)
         );
 
         assertEquals("lastName is required", exception.getMessage());
-        verify(patientRepository, never()).findByLastName(anyString());
-        verify(patientRepository, never()).findByLastNameAndFirstName(anyString(), anyString());
+        verify(patientRepository, never()).findByLastName(anyString(), any(Pageable.class));
+        verify(patientRepository, never()).findByLastNameAndFirstName(anyString(), anyString(), any(Pageable.class));
     }
 
     @Test
     void shouldThrowIllegalArgumentExceptionWhenSearchingPatientsWithBlankLastName() {
         IllegalArgumentException exception = assertThrows(
                 IllegalArgumentException.class,
-                () -> patientService.searchPatients(" ", "Clara")
+                () -> patientService.searchPatients(" ", "Clara", 0, 20)
         );
 
         assertEquals("lastName is required", exception.getMessage());
-        verify(patientRepository, never()).findByLastName(anyString());
-        verify(patientRepository, never()).findByLastNameAndFirstName(anyString(), anyString());
+        verify(patientRepository, never()).findByLastName(anyString(), any(Pageable.class));
+        verify(patientRepository, never()).findByLastNameAndFirstName(anyString(), anyString(), any(Pageable.class));
     }
 
     @Test
@@ -255,18 +255,22 @@ class PatientServiceTest {
                 "0203040506"
         );
 
-        when(patientRepository.findByLastName("M")).thenReturn(List.of(hugoPatient));
+        Pageable pageable = PageRequest.of(0, 20);
+        Page<Patient> patientPage = new PageImpl<>(List.of(hugoPatient));
 
-        List<PatientDTO> result = patientService.searchPatients("M", null);
+        when(patientRepository.findByLastName("M", pageable)).thenReturn(patientPage);
+
+        Page<PatientDTO> result = patientService.searchPatients("M", null, 0, 20);
 
         assertNotNull(result);
-        assertEquals(1, result.size());
-        assertEquals("Hugo", result.get(0).getFirstName());
-        assertEquals("M", result.get(0).getLastName());
+        assertEquals(1, result.getContent().size());
+        assertEquals("Hugo", result.getContent().get(0).getFirstName());
+        assertEquals("M", result.getContent().get(0).getLastName());
 
-        verify(patientRepository).findByLastName("M");
-        verify(patientRepository, never()).findByLastNameAndFirstName(anyString(), anyString());
+        verify(patientRepository).findByLastName("M", pageable);
+        verify(patientRepository, never()).findByLastNameAndFirstName(anyString(), anyString(), any(Pageable.class));
     }
+
 
     @Test
     void shouldSearchPatientsByLastNameAndFirstName() {
@@ -280,18 +284,20 @@ class PatientServiceTest {
                 "0304050607"
         );
 
-        when(patientRepository.findByLastNameAndFirstName("Z", "Clara"))
-                .thenReturn(List.of(claraPatient));
+        Pageable pageable = PageRequest.of(0, 20);
+        Page<Patient> patientPage = new PageImpl<>(List.of(claraPatient));
 
-        List<PatientDTO> result = patientService.searchPatients("Z", "Clara");
+        when(patientRepository.findByLastNameAndFirstName("Z", "Clara", pageable)).thenReturn(patientPage);
+
+        Page<PatientDTO> result = patientService.searchPatients("Z", "Clara", 0, 20);
 
         assertNotNull(result);
-        assertEquals(1, result.size());
-        assertEquals("Clara", result.get(0).getFirstName());
-        assertEquals("Z", result.get(0).getLastName());
+        assertEquals(1, result.getContent().size());
+        assertEquals("Clara", result.getContent().get(0).getFirstName());
+        assertEquals("Z", result.getContent().get(0).getLastName());
 
-        verify(patientRepository).findByLastNameAndFirstName("Z", "Clara");
-        verify(patientRepository, never()).findByLastName("Z");
+        verify(patientRepository).findByLastNameAndFirstName("Z", "Clara", pageable);
+        verify(patientRepository, never()).findByLastName(anyString(), any(Pageable.class));
     }
 
     @Test

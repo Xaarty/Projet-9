@@ -111,14 +111,18 @@ class PatientControllerTest {
                 "0708091011"
         );
 
-        when(patientService.searchPatients("V", "Lea")).thenReturn(List.of(patient));
+        Page<PatientDTO> patientPage = new PageImpl<>(List.of(patient));
+
+        when(patientService.searchPatients("V", "Lea", 0, 20)).thenReturn(patientPage);
 
         mockMvc.perform(get("/patients/search")
                         .param("lastName", "V")
-                        .param("firstName", "Lea"))
+                        .param("firstName", "Lea")
+                        .param("page", "0")
+                        .param("size", "20"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].firstName").value("Lea"))
-                .andExpect(jsonPath("$[0].lastName").value("V"));
+                .andExpect(jsonPath("$.content[0].firstName").value("Lea"))
+                .andExpect(jsonPath("$.content[0].lastName").value("V"));
     }
 
     @Test

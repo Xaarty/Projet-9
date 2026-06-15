@@ -20,10 +20,14 @@ public class PatientFrontService {
     // URL de la gateway
     private final String gatewayBaseUrl;
 
+    private final String assessmentServiceBaseUrl;
+
     public PatientFrontService(RestTemplate restTemplate,
-                               @Value("${gateway.base-url}") String gatewayBaseUrl) {
+                               @Value("${gateway.base-url}") String gatewayBaseUrl,
+                               @Value("${assessment-service.base-url}") String assessmentServiceBaseUrl) {
         this.restTemplate = restTemplate;
         this.gatewayBaseUrl = gatewayBaseUrl;
+        this.assessmentServiceBaseUrl = assessmentServiceBaseUrl;
     }
 
     // Retourne la liste des patients avec pagination
@@ -58,20 +62,17 @@ public class PatientFrontService {
         String url = gatewayBaseUrl + "/patients";
 
         HttpHeaders headers = createHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-
         HttpEntity<PatientDTO> entity = new HttpEntity<>(patientDTO, headers);
 
         restTemplate.exchange(url, HttpMethod.POST, entity, PatientDTO.class);
     }
+
 
     //Modification d'un patient
     public void updatePatient(Integer id, PatientDTO patientDTO) {
         String url = gatewayBaseUrl + "/patients/" + id;
 
         HttpHeaders headers = createHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-
         HttpEntity<PatientDTO> entity = new HttpEntity<>(patientDTO, headers);
 
         restTemplate.exchange(url, HttpMethod.PUT, entity, PatientDTO.class);
@@ -107,7 +108,7 @@ public class PatientFrontService {
         restTemplate.exchange(url, HttpMethod.DELETE, entity, Void.class);
     }
 
-    //Header pour requêtes https
+//    //Header pour requêtes https
     private HttpHeaders createHeaders() {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -132,9 +133,7 @@ public class PatientFrontService {
     public void createNote(NotesDTO noteDTO) {
         String url = gatewayBaseUrl + "/notes";
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-
+        HttpHeaders headers = createHeaders();
         HttpEntity<NotesDTO> entity = new HttpEntity<>(noteDTO, headers);
 
         restTemplate.exchange(url, HttpMethod.POST, entity, NotesDTO.class);
@@ -171,8 +170,12 @@ public class PatientFrontService {
     }
 
     public void evictAssessmentCache(Integer patientId) {
+        if (patientId == null) {
+            return;
+        }
+
         try {
-            String url = gatewayBaseUrl + "/cache/assessments/" + patientId;
+            String url = assessmentServiceBaseUrl + "/cache/assessments/" + patientId;
             restTemplate.exchange(url, HttpMethod.DELETE, null, Void.class);
         } catch (Exception e) {
             System.out.println("Cache assessment non mis a jour pour patientId=" + patientId);

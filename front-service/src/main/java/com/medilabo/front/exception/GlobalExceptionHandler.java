@@ -35,7 +35,6 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public String handleException(Exception ex, Model model) {
-        ex.printStackTrace(); // TEMPORAIRE POUR DEBUG
 
         model.addAttribute("errorTitle", "Internal server error");
         model.addAttribute("errorMessage", "An unexpected error occurred.");

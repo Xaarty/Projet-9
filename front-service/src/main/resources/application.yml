@@ -7,3 +7,6 @@ spring:
 
 gateway:
   base-url: ${GATEWAY_BASE_URL:http://localhost:8080}
+
+assessment-service:
+  base-url: ${ASSESSMENT_SERVICE_BASE_URL:http://localhost:8084}

@@ -89,6 +89,7 @@ services:
       - gateway-service
     environment:
       GATEWAY_BASE_URL: http://gateway-service:8080
+      ASSESSMENT_SERVICE_BASE_URL: http://assessment-service:8084
 
 volumes:
   patient_db_data:

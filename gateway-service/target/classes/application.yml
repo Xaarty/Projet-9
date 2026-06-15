@@ -22,8 +22,3 @@ spring:
           uri: ${ASSESSMENT_SERVICE_URI:http://localhost:8084}
           predicates:
             - Path=/assess/**
-
-        - id: assessment-cache-service
-          uri: ${ASSESSMENT_SERVICE_URI:http://localhost:8084}
-          predicates:
-            - Path=/cache/assessments/**
