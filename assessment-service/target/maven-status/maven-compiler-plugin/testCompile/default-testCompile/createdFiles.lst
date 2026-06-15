@@ -1,0 +1,7 @@
+com\medilabo\assessment\client\PatientClientTest.class
+com\medilabo\assessment\config\RestTemplateConfigTest.class
+com\medilabo\assessment\controller\AssessmentControllerTest.class
+com\medilabo\assessment\service\AssessmentServiceTest.class
+com\medilabo\assessment\dto\DtoTest.class
+com\medilabo\assessment\exception\GlobalExceptionHandlerTest.class
+com\medilabo\assessment\client\NotesClientTest.class

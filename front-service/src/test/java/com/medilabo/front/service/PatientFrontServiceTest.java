@@ -10,6 +10,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDate;
@@ -31,7 +32,12 @@ class PatientFrontServiceTest {
     @BeforeEach
     void setUp() {
         restTemplate = mock(RestTemplate.class);
-        patientFrontService = new PatientFrontService(restTemplate, "http://localhost:8080");
+
+        patientFrontService = new PatientFrontService(
+                restTemplate,
+                "http://localhost:8080",
+                "http://localhost:8084"
+        );
 
         lucasPatient = new PatientDTO(
                 101,
@@ -378,11 +384,11 @@ class PatientFrontServiceTest {
                 eq(HttpMethod.PUT),
                 any(HttpEntity.class),
                 eq(PatientDTO.class)
-        )).thenReturn(response);
+        )).thenThrow(new HttpClientErrorException(HttpStatus.BAD_REQUEST));
 
-        assertThrows(RuntimeException.class, () -> {
-            patientFrontService.updatePatient(328, alicePatient);
-        });
+        assertThrows(HttpClientErrorException.class, () ->
+                patientFrontService.updatePatient(328, alicePatient)
+        );
     }
 
     @Test

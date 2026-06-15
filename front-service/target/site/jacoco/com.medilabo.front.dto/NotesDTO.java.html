@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>NotesDTO.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">front-service</a> &gt; <a href="index.source.html" class="el_package">com.medilabo.front.dto</a> &gt; <span class="el_source">NotesDTO.java</span></div><h1>NotesDTO.java</h1><pre class="source lang-java linenums">package com.medilabo.front.dto;
+
+import java.time.LocalDateTime;
+
+public class NotesDTO {
+
+    private String id;
+    private Integer patientId;
+    private String note;
+    private LocalDateTime createdAt;
+
+<span class="fc" id="L12">    public NotesDTO() {</span>
+<span class="fc" id="L13">    }</span>
+
+<span class="fc" id="L15">    public NotesDTO(String id, Integer patientId, String note, LocalDateTime createdAt) {</span>
+<span class="fc" id="L16">        this.id = id;</span>
+<span class="fc" id="L17">        this.patientId = patientId;</span>
+<span class="fc" id="L18">        this.note = note;</span>
+<span class="fc" id="L19">        this.createdAt = createdAt;</span>
+<span class="fc" id="L20">    }</span>
+
+    public String getId() {
+<span class="fc" id="L23">        return id;</span>
+    }
+
+    public Integer getPatientId() {
+<span class="fc" id="L27">        return patientId;</span>
+    }
+
+    public String getNote() {
+<span class="fc" id="L31">        return note;</span>
+    }
+
+    public LocalDateTime getCreatedAt() {
+<span class="fc" id="L35">        return createdAt;</span>
+    }
+
+    public void setId(String id) {
+<span class="fc" id="L39">        this.id = id;</span>
+<span class="fc" id="L40">    }</span>
+
+    public void setPatientId(Integer patientId) {
+<span class="fc" id="L43">        this.patientId = patientId;</span>
+<span class="fc" id="L44">    }</span>
+
+    public void setNote(String note) {
+<span class="fc" id="L47">        this.note = note;</span>
+<span class="fc" id="L48">    }</span>
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+<span class="fc" id="L51">        this.createdAt = createdAt;</span>
+<span class="fc" id="L52">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

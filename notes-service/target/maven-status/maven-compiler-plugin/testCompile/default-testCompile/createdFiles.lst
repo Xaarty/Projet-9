@@ -1,0 +1,6 @@
+com\medilabo\notes\exception\GlobalExceptionHandlerTest.class
+com\medilabo\notes\service\NoteServiceTest.class
+com\medilabo\notes\dto\NoteDTOTest.class
+com\medilabo\notes\exception\NotFoundExceptionTest.class
+com\medilabo\notes\controller\NoteControllerTest.class
+com\medilabo\notes\model\NoteTest.class

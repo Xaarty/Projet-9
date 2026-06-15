@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PatientService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">patient-service</a> &gt; <a href="index.source.html" class="el_package">com.medilabo.patient.service</a> &gt; <span class="el_source">PatientService.java</span></div><h1>PatientService.java</h1><pre class="source lang-java linenums">package com.medilabo.patient.service;
+
+import com.medilabo.patient.dto.PatientDTO;
+import com.medilabo.patient.exception.NotFoundException;
+import com.medilabo.patient.model.Patient;
+import com.medilabo.patient.repository.PatientRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class PatientService {
+
+    private final PatientRepository patientRepository;
+
+<span class="fc" id="L19">    public PatientService(PatientRepository patientRepository) {</span>
+<span class="fc" id="L20">        this.patientRepository = patientRepository;</span>
+<span class="fc" id="L21">    }</span>
+
+    //Récupération de tout les patients
+    public Page&lt;PatientDTO&gt; getAllPatients(int page, int size) {
+<span class="fc" id="L25">        Pageable pageable = PageRequest.of(page, size);</span>
+
+<span class="fc" id="L27">        return patientRepository.findAll(pageable)</span>
+<span class="fc" id="L28">                .map(this::convertToDTO);</span>
+    }
+
+    //Récupération d'un patient par ID
+    public PatientDTO getPatientById(Integer id) {
+<span class="fc" id="L33">        Patient patient = patientRepository.findById(id)</span>
+<span class="fc" id="L34">                .orElseThrow(() -&gt; new NotFoundException(&quot;Patient not found with id: &quot; + id));</span>
+<span class="fc" id="L35">        return convertToDTO(patient);</span>
+    }
+
+    //Création d'un patient
+    public PatientDTO createPatient(PatientDTO dto) {
+<span class="fc" id="L40">        Patient patient = new Patient();</span>
+<span class="fc" id="L41">        patient.setFirstName(dto.getFirstName());</span>
+<span class="fc" id="L42">        patient.setLastName(dto.getLastName());</span>
+<span class="fc" id="L43">        patient.setBirthDate(dto.getBirthDate());</span>
+<span class="fc" id="L44">        patient.setGender(dto.getGender());</span>
+<span class="fc" id="L45">        patient.setAddress(dto.getAddress());</span>
+<span class="fc" id="L46">        patient.setPhone(dto.getPhone());</span>
+
+<span class="fc" id="L48">        Patient savedPatient = patientRepository.save(patient);</span>
+<span class="fc" id="L49">        return convertToDTO(savedPatient);</span>
+    }
+
+    //Modification de données patient
+    public PatientDTO updatePatient(Integer id, PatientDTO dto) {
+<span class="fc" id="L54">        Patient patient = patientRepository.findById(id)</span>
+<span class="fc" id="L55">                .orElseThrow(() -&gt; new NotFoundException(&quot;Patient not found with id: &quot; + id));</span>
+
+<span class="fc" id="L57">        patient.setFirstName(dto.getFirstName());</span>
+<span class="fc" id="L58">        patient.setLastName(dto.getLastName());</span>
+<span class="fc" id="L59">        patient.setBirthDate(dto.getBirthDate());</span>
+<span class="fc" id="L60">        patient.setGender(dto.getGender());</span>
+<span class="fc" id="L61">        patient.setAddress(dto.getAddress());</span>
+<span class="fc" id="L62">        patient.setPhone(dto.getPhone());</span>
+
+<span class="fc" id="L64">        Patient updatedPatient = patientRepository.save(patient);</span>
+<span class="fc" id="L65">        return convertToDTO(updatedPatient);</span>
+    }
+
+    //Suppression d'un patient
+    public void deletePatient(Integer id) {
+<span class="fc bfc" id="L70" title="All 2 branches covered.">        if (!patientRepository.existsById(id)) {</span>
+<span class="fc" id="L71">            throw new NotFoundException(&quot;Patient not found with id: &quot; + id);</span>
+        }
+
+<span class="fc" id="L74">        patientRepository.deleteById(id);</span>
+<span class="fc" id="L75">    }</span>
+
+    //Recherche de patient par nom voir prénom si renseigné
+    public Page&lt;PatientDTO&gt; searchPatients(String lastName, String firstName, int page, int size) {
+<span class="fc bfc" id="L79" title="All 4 branches covered.">        if (lastName == null || lastName.isBlank()) {</span>
+<span class="fc" id="L80">            throw new IllegalArgumentException(&quot;lastName is required&quot;);</span>
+        }
+
+<span class="fc" id="L83">        Pageable pageable = PageRequest.of(page, size);</span>
+
+        Page&lt;Patient&gt; patients;
+
+<span class="pc bpc" id="L87" title="1 of 4 branches missed.">        if (firstName != null &amp;&amp; !firstName.isBlank()) {</span>
+<span class="fc" id="L88">            patients = patientRepository.findByLastNameAndFirstName(lastName, firstName, pageable);</span>
+        } else {
+<span class="fc" id="L90">            patients = patientRepository.findByLastName(lastName, pageable);</span>
+        }
+
+<span class="fc" id="L93">        return patients.map(this::convertToDTO);</span>
+    }
+
+    // Convertit l’entité Patient en DTO
+    private PatientDTO convertToDTO(Patient patient) {
+
+<span class="fc" id="L99">        PatientDTO dto = new PatientDTO(</span>
+<span class="fc" id="L100">                patient.getId(),</span>
+<span class="fc" id="L101">                patient.getFirstName(),</span>
+<span class="fc" id="L102">                patient.getLastName(),</span>
+<span class="fc" id="L103">                patient.getBirthDate(),</span>
+<span class="fc" id="L104">                patient.getGender(),</span>
+<span class="fc" id="L105">                patient.getAddress(),</span>
+<span class="fc" id="L106">                patient.getPhone()</span>
+        );
+
+<span class="fc" id="L109">        dto.setVersion(patient.getVersion());</span>
+
+<span class="fc" id="L111">        return dto;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

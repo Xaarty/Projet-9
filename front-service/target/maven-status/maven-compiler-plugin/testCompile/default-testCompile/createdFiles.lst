@@ -1,0 +1,7 @@
+com\medilabo\front\controller\PatientWebControllerTest.class
+com\medilabo\front\exception\GlobalExceptionHandlerTest.class
+com\medilabo\front\config\AppConfigTest.class
+com\medilabo\front\config\SecurityConfigTest.class
+com\medilabo\front\service\PatientFrontServiceTest.class
+com\medilabo\front\dto\DtoTest.class
+com\medilabo\front\controller\AuthControllerTest.class

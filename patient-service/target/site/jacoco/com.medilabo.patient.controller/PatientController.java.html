@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PatientController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">patient-service</a> &gt; <a href="index.source.html" class="el_package">com.medilabo.patient.controller</a> &gt; <span class="el_source">PatientController.java</span></div><h1>PatientController.java</h1><pre class="source lang-java linenums">package com.medilabo.patient.controller;
+
+import com.medilabo.patient.dto.PatientDTO;
+import com.medilabo.patient.model.Patient;
+import com.medilabo.patient.service.PatientService;
+import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import org.springframework.web.bind.annotation.RequestParam;
+import java.util.List;
+
+@RestController
+@RequestMapping(&quot;/patients&quot;)
+public class PatientController {
+
+    private final PatientService patientService;
+
+<span class="fc" id="L20">    public PatientController(PatientService patientService) {</span>
+<span class="fc" id="L21">        this.patientService = patientService;</span>
+<span class="fc" id="L22">    }</span>
+
+
+    //Récupération d'un patient par ID
+    //Ajout de pagination. Limite le coût à long terme.
+    @GetMapping
+    public Page&lt;PatientDTO&gt; getAllPatients(
+            @RequestParam(defaultValue = &quot;0&quot;) int page,
+            @RequestParam(defaultValue = &quot;20&quot;) int size) {
+
+<span class="fc" id="L32">        return patientService.getAllPatients(page, size);</span>
+    }
+
+    // Récupération d'un patient par ID
+    @GetMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;PatientDTO&gt; getPatientById(@PathVariable Integer id) {
+<span class="fc" id="L38">        return ResponseEntity.ok(patientService.getPatientById(id));</span>
+    }
+
+    //Recherche de patient par nom voir prénom si renseigné
+    @GetMapping(&quot;/search&quot;)
+    public ResponseEntity&lt;Page&lt;PatientDTO&gt;&gt; searchPatients(
+            @RequestParam String lastName,
+            @RequestParam(required = false) String firstName,
+            @RequestParam(defaultValue = &quot;0&quot;) int page,
+            @RequestParam(defaultValue = &quot;20&quot;) int size) {
+
+<span class="fc" id="L49">        return ResponseEntity.ok(patientService.searchPatients(lastName, firstName, page, size));</span>
+    }
+
+    //Création d'un patient
+    @PostMapping
+    public ResponseEntity&lt;PatientDTO&gt; createPatient(@Valid @RequestBody PatientDTO patientDTO) {
+<span class="fc" id="L55">        return ResponseEntity.ok(patientService.createPatient(patientDTO));</span>
+    }
+
+    //Modification de données patient
+    @PutMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;PatientDTO&gt; updatePatient(@PathVariable Integer id,
+                                                    @Valid @RequestBody PatientDTO patientDTO) {
+<span class="fc" id="L62">        return ResponseEntity.ok(patientService.updatePatient(id, patientDTO));</span>
+    }
+
+    //Suppression d'un patient
+    @DeleteMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;Void&gt; deletePatient(@PathVariable Integer id) {
+<span class="fc" id="L68">        patientService.deletePatient(id);</span>
+<span class="fc" id="L69">        return ResponseEntity.noContent().build();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
